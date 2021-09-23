@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,15 +16,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bezkoder.spring.data.jpa.pagingsorting.model.Infraccione;
-
+import com.bezkoder.spring.data.jpa.pagingsorting.model.Tutorial;
 import com.bezkoder.spring.data.jpa.pagingsorting.repository.InfracionesRepository;
 
-@CrossOrigin(origins = "http://localhost:8081")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 
@@ -46,8 +48,9 @@ public class InfracionesController {
 	  @GetMapping("/infraciones")
 	  public ResponseEntity<Map<String, Object>> getAllTutorialsPage(
 	      @RequestParam(required = false) String title,
+	      @RequestParam(defaultValue = "dni") String campo,
 	      @RequestParam(defaultValue = "0") int page,
-	      @RequestParam(defaultValue = "3") int size,
+	      @RequestParam(defaultValue = "5") int size,
 	      @RequestParam(defaultValue = "id,desc") String[] sort) {
 
 	    try {
@@ -72,8 +75,26 @@ public class InfracionesController {
 	      if (title == null)
 	        pageTuts = infracionesRepository.findAll(pagingSort);
 	      else
-	        pageTuts = infracionesRepository.findByNombreContaining(title, pagingSort);//findByTitleContaining(title, pagingSort);
+	    	  switch (campo) {
+	    	  case "dni":
+	    		  pageTuts = infracionesRepository.findByDniContaining(title, pagingSort);
+	    		  break;
+	    	  case "nombre":
+	    		  pageTuts = infracionesRepository.findByNombreContaining(title, pagingSort);//findByDniContaining(title, pagingSort);
+	    		  break;
+	    	  case "acta":
+	    		  pageTuts = infracionesRepository.findByActaContaining(title, pagingSort);//findByDniContaining(title, pagingSort);
+	    		  break;
+	    	  case "dominio":
+	    		  pageTuts = infracionesRepository.findByDominioContaining(title, pagingSort);//findByDniContaining(title, pagingSort);
+	    		  break;
+	    	  default:
+	    		  pageTuts = infracionesRepository.findByDniContaining(title, pagingSort);
+	    	    break;
+	    	}
+	          //findByNombreContaining(title, pagingSort);//findByTitleContaining(title, pagingSort);
 
+	      
 	      infracciones  = pageTuts.getContent();
 
 	      Map<String, Object> response = new HashMap<>();
@@ -88,5 +109,15 @@ public class InfracionesController {
 	    }
 	  }
 
+	  @GetMapping("/infraciones/{id}")
+	  public ResponseEntity<Infraccione> getTutorialById(@PathVariable("id") int id) {
+	    Optional<Infraccione> tutorialData = infracionesRepository.findById(id);//tutorialRepository.findById(id);
+
+	    if (tutorialData.isPresent()) {
+	      return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
+	    } else {
+	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	  }
 
 }
