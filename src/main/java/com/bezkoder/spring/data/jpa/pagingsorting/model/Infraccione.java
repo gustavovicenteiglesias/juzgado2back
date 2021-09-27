@@ -68,6 +68,45 @@ public class Infraccione implements Serializable {
 	private String valor;
 
 	private String vehiculo;
+	
+	private String comentario;
+	
+	private String intervino ;
+	
+	
+
+	public Infraccione(int id, String acta, String actoResolutorio, String agente, String articulo, String chasis,
+			String codigoPostal, String descripcion, String direccion, String dni, String dominio, Date fecha,
+			Date fechaResolucion, String inciso, String leyOrdenanza, String localidad, String lugar, String motor,
+			String nombre, String provincia, float unidadValor, String valor, String vehiculo, String comentario,
+			String intervino) {
+		super();
+		this.id = id;
+		this.acta = acta;
+		this.actoResolutorio = actoResolutorio;
+		this.agente = agente;
+		this.articulo = articulo;
+		this.chasis = chasis;
+		this.codigoPostal = codigoPostal;
+		this.descripcion = descripcion;
+		this.direccion = direccion;
+		this.dni = dni;
+		this.dominio = dominio;
+		this.fecha = fecha;
+		this.fechaResolucion = fechaResolucion;
+		this.inciso = inciso;
+		this.leyOrdenanza = leyOrdenanza;
+		this.localidad = localidad;
+		this.lugar = lugar;
+		this.motor = motor;
+		this.nombre = nombre;
+		this.provincia = provincia;
+		this.unidadValor = unidadValor;
+		this.valor = valor;
+		this.vehiculo = vehiculo;
+		this.comentario = comentario;
+		this.intervino = intervino;
+	}
 
 	public Infraccione() {
 	}
@@ -255,5 +294,23 @@ public class Infraccione implements Serializable {
 	public void setVehiculo(String vehiculo) {
 		this.vehiculo = vehiculo;
 	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
+
+	public String getIntervino() {
+		return intervino;
+	}
+
+	public void setIntervino(String intervino) {
+		this.intervino = intervino;
+	}
+	
+	
 
 }

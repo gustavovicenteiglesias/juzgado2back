@@ -17,6 +17,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -117,6 +120,71 @@ public class InfracionesController {
 	      return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
 	    } else {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	  }
+	  
+	  @PutMapping("/infraciones/{id}")
+	  public ResponseEntity<Infraccione> updateTutorial(@PathVariable("id") int id, @RequestBody Infraccione tutorial) {
+	    Optional<Infraccione> tutorialData = infracionesRepository.findById(id);
+
+	    if (tutorialData.isPresent()) {
+	    	Infraccione _tutorial = tutorialData.get();
+	    _tutorial.setActa(tutorial.getActa());
+	    _tutorial.setFecha(tutorial.getFecha());
+	    _tutorial.setNombre(tutorial.getNombre());
+	    _tutorial.setDireccion(tutorial.getDireccion());
+	    _tutorial.setCodigoPostal(tutorial.getCodigoPostal());
+	    _tutorial.setLocalidad(tutorial.getLocalidad());
+	    _tutorial.setProvincia(tutorial.getProvincia());
+	    _tutorial.setDni(tutorial.getDni());
+	    _tutorial.setDescripcion(tutorial.getDescripcion());
+	    _tutorial.setLugar(tutorial.getLugar());
+	    _tutorial.setVehiculo(tutorial.getVehiculo());
+	    _tutorial.setDominio(tutorial.getDominio());
+	    _tutorial.setAgente(tutorial.getAgente());
+	    _tutorial.setActoResolutorio(tutorial.getActoResolutorio());
+	    _tutorial.setFechaResolucion(tutorial.getFechaResolucion());
+	    _tutorial.setLeyOrdenanza(tutorial.getLeyOrdenanza());
+	    _tutorial.setArticulo(tutorial.getArticulo());
+	    _tutorial.setInciso(tutorial.getInciso());
+	    _tutorial.setValor(tutorial.getValor());
+	    _tutorial.setComentario(tutorial.getComentario());
+	    _tutorial.setIntervino(tutorial.getIntervino());
+	     
+	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.OK);
+	    } else {
+	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	    }
+	  }
+	  
+	  @PostMapping("/infraciones")
+	  public ResponseEntity<Infraccione> createTutorial(@RequestBody Infraccione tutorial) {
+	    try {
+	      Infraccione _tutorial = new Infraccione();
+	      _tutorial.setActa(tutorial.getActa());
+		    _tutorial.setFecha(tutorial.getFecha());
+		    _tutorial.setNombre(tutorial.getNombre());
+		    _tutorial.setDireccion(tutorial.getDireccion());
+		    _tutorial.setCodigoPostal(tutorial.getCodigoPostal());
+		    _tutorial.setLocalidad(tutorial.getLocalidad());
+		    _tutorial.setProvincia(tutorial.getProvincia());
+		    _tutorial.setDni(tutorial.getDni());
+		    _tutorial.setDescripcion(tutorial.getDescripcion());
+		    _tutorial.setLugar(tutorial.getLugar());
+		    _tutorial.setVehiculo(tutorial.getVehiculo());
+		    _tutorial.setDominio(tutorial.getDominio());
+		    _tutorial.setAgente(tutorial.getAgente());
+		    _tutorial.setActoResolutorio(tutorial.getActoResolutorio());
+		    _tutorial.setFechaResolucion(tutorial.getFechaResolucion());
+		    _tutorial.setLeyOrdenanza(tutorial.getLeyOrdenanza());
+		    _tutorial.setArticulo(tutorial.getArticulo());
+		    _tutorial.setInciso(tutorial.getInciso());
+		    _tutorial.setValor(tutorial.getValor());
+		    _tutorial.setComentario(tutorial.getComentario());
+		    _tutorial.setIntervino(tutorial.getIntervino());
+	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.CREATED);
+	    } catch (Exception e) {
+	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	  }
 
