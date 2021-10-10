@@ -73,13 +73,32 @@ public class Infraccione implements Serializable {
 	
 	private String intervino ;
 	
+	@Column(name="cp_titular")
+	private String cpTitular;
+	
+	@Column(name="nombre_titular")
+	private String nombreTitular;
+	
+	@Column(name="direccion_titular")
+	private String direccionTitular;
+	
+	@Column(name="localidad_titular")
+	private String localidadTitular;
+	
+	@Column(name="provincia_titular")
+	private String provinciaTitular;
+	
+	@Column(name="dni_titular")
+	private String dniTitular;
 	
 
+	
 	public Infraccione(int id, String acta, String actoResolutorio, String agente, String articulo, String chasis,
 			String codigoPostal, String descripcion, String direccion, String dni, String dominio, Date fecha,
 			Date fechaResolucion, String inciso, String leyOrdenanza, String localidad, String lugar, String motor,
 			String nombre, String provincia, float unidadValor, String valor, String vehiculo, String comentario,
-			String intervino) {
+			String intervino, String cpTitular, String nombreTitular, String direccionTitular, String localidadTitular,
+			String provinciaTitular, String dniTitular) {
 		super();
 		this.id = id;
 		this.acta = acta;
@@ -106,6 +125,12 @@ public class Infraccione implements Serializable {
 		this.vehiculo = vehiculo;
 		this.comentario = comentario;
 		this.intervino = intervino;
+		this.cpTitular = cpTitular;
+		this.nombreTitular = nombreTitular;
+		this.direccionTitular = direccionTitular;
+		this.localidadTitular = localidadTitular;
+		this.provinciaTitular = provinciaTitular;
+		this.dniTitular = dniTitular;
 	}
 
 	public Infraccione() {
@@ -309,6 +334,54 @@ public class Infraccione implements Serializable {
 
 	public void setIntervino(String intervino) {
 		this.intervino = intervino;
+	}
+
+	public String getCpTitular() {
+		return cpTitular;
+	}
+
+	public void setCpTitular(String cpTitular) {
+		this.cpTitular = cpTitular;
+	}
+
+	public String getNombreTitular() {
+		return nombreTitular;
+	}
+
+	public void setNombreTitular(String nombreTitular) {
+		this.nombreTitular = nombreTitular;
+	}
+
+	public String getDireccionTitular() {
+		return direccionTitular;
+	}
+
+	public void setDireccionTitular(String direccionTitular) {
+		this.direccionTitular = direccionTitular;
+	}
+
+	public String getLocalidadTitular() {
+		return localidadTitular;
+	}
+
+	public void setLocalidadTitular(String localidadTitular) {
+		this.localidadTitular = localidadTitular;
+	}
+
+	public String getProvinciaTitular() {
+		return provinciaTitular;
+	}
+
+	public void setProvinciaTitular(String provinciaTitular) {
+		this.provinciaTitular = provinciaTitular;
+	}
+
+	public String getDniTitular() {
+		return dniTitular;
+	}
+
+	public void setDniTitular(String dniTitular) {
+		this.dniTitular = dniTitular;
 	}
 	
 	
