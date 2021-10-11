@@ -16,7 +16,8 @@ public class Infraccione implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	private String acta;
 
@@ -63,7 +64,7 @@ public class Infraccione implements Serializable {
 	private String provincia;
 
 	@Column(name="unidad_valor")
-	private float unidadValor;
+	private Float unidadValor;
 
 	private String valor;
 
@@ -73,27 +74,25 @@ public class Infraccione implements Serializable {
 	
 	private String intervino ;
 	
-	@Column(name="cp_titular")
+	@Column(name="titular_codigo_postal	")
 	private String cpTitular;
 	
-	@Column(name="nombre_titular")
+	@Column(name="titular_nombre")
 	private String nombreTitular;
 	
-	@Column(name="direccion_titular")
+	@Column(name="titular_direccion")
 	private String direccionTitular;
 	
-	@Column(name="localidad_titular")
+	@Column(name="titular_localidad")
 	private String localidadTitular;
 	
-	@Column(name="provincia_titular")
+	@Column(name="titular_provincia")
 	private String provinciaTitular;
 	
-	@Column(name="dni_titular")
+	@Column(name="titular_dni")
 	private String dniTitular;
-	
 
-	
-	public Infraccione(int id, String acta, String actoResolutorio, String agente, String articulo, String chasis,
+	public Infraccione(Long id, String acta, String actoResolutorio, String agente, String articulo, String chasis,
 			String codigoPostal, String descripcion, String direccion, String dni, String dominio, Date fecha,
 			Date fechaResolucion, String inciso, String leyOrdenanza, String localidad, String lugar, String motor,
 			String nombre, String provincia, float unidadValor, String valor, String vehiculo, String comentario,
@@ -134,18 +133,19 @@ public class Infraccione implements Serializable {
 	}
 
 	public Infraccione() {
+		super();
 	}
 
-	public int getId() {
-		return this.id;
+	public Long getId() {
+		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 	public String getActa() {
-		return this.acta;
+		return acta;
 	}
 
 	public void setActa(String acta) {
@@ -153,7 +153,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getActoResolutorio() {
-		return this.actoResolutorio;
+		return actoResolutorio;
 	}
 
 	public void setActoResolutorio(String actoResolutorio) {
@@ -161,7 +161,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getAgente() {
-		return this.agente;
+		return agente;
 	}
 
 	public void setAgente(String agente) {
@@ -169,7 +169,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getArticulo() {
-		return this.articulo;
+		return articulo;
 	}
 
 	public void setArticulo(String articulo) {
@@ -177,7 +177,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getChasis() {
-		return this.chasis;
+		return chasis;
 	}
 
 	public void setChasis(String chasis) {
@@ -185,7 +185,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getCodigoPostal() {
-		return this.codigoPostal;
+		return codigoPostal;
 	}
 
 	public void setCodigoPostal(String codigoPostal) {
@@ -193,7 +193,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
 	public void setDescripcion(String descripcion) {
@@ -201,7 +201,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getDireccion() {
-		return this.direccion;
+		return direccion;
 	}
 
 	public void setDireccion(String direccion) {
@@ -209,7 +209,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getDni() {
-		return this.dni;
+		return dni;
 	}
 
 	public void setDni(String dni) {
@@ -217,7 +217,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getDominio() {
-		return this.dominio;
+		return dominio;
 	}
 
 	public void setDominio(String dominio) {
@@ -225,7 +225,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public Date getFecha() {
-		return this.fecha;
+		return fecha;
 	}
 
 	public void setFecha(Date fecha) {
@@ -233,7 +233,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public Date getFechaResolucion() {
-		return this.fechaResolucion;
+		return fechaResolucion;
 	}
 
 	public void setFechaResolucion(Date fechaResolucion) {
@@ -241,7 +241,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getInciso() {
-		return this.inciso;
+		return inciso;
 	}
 
 	public void setInciso(String inciso) {
@@ -249,7 +249,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getLeyOrdenanza() {
-		return this.leyOrdenanza;
+		return leyOrdenanza;
 	}
 
 	public void setLeyOrdenanza(String leyOrdenanza) {
@@ -257,7 +257,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getLocalidad() {
-		return this.localidad;
+		return localidad;
 	}
 
 	public void setLocalidad(String localidad) {
@@ -265,7 +265,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getLugar() {
-		return this.lugar;
+		return lugar;
 	}
 
 	public void setLugar(String lugar) {
@@ -273,7 +273,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getMotor() {
-		return this.motor;
+		return motor;
 	}
 
 	public void setMotor(String motor) {
@@ -281,7 +281,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
@@ -289,7 +289,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getProvincia() {
-		return this.provincia;
+		return provincia;
 	}
 
 	public void setProvincia(String provincia) {
@@ -297,7 +297,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public float getUnidadValor() {
-		return this.unidadValor;
+		return unidadValor;
 	}
 
 	public void setUnidadValor(float unidadValor) {
@@ -305,7 +305,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getValor() {
-		return this.valor;
+		return valor;
 	}
 
 	public void setValor(String valor) {
@@ -313,7 +313,7 @@ public class Infraccione implements Serializable {
 	}
 
 	public String getVehiculo() {
-		return this.vehiculo;
+		return vehiculo;
 	}
 
 	public void setVehiculo(String vehiculo) {
@@ -383,6 +383,24 @@ public class Infraccione implements Serializable {
 	public void setDniTitular(String dniTitular) {
 		this.dniTitular = dniTitular;
 	}
+
+	@Override
+	public String toString() {
+		return "Infraccione [id=" + id + ", acta=" + acta + ", actoResolutorio=" + actoResolutorio + ", agente="
+				+ agente + ", articulo=" + articulo + ", chasis=" + chasis + ", codigoPostal=" + codigoPostal
+				+ ", descripcion=" + descripcion + ", direccion=" + direccion + ", dni=" + dni + ", dominio=" + dominio
+				+ ", fecha=" + fecha + ", fechaResolucion=" + fechaResolucion + ", inciso=" + inciso + ", leyOrdenanza="
+				+ leyOrdenanza + ", localidad=" + localidad + ", lugar=" + lugar + ", motor=" + motor + ", nombre="
+				+ nombre + ", provincia=" + provincia + ", unidadValor=" + unidadValor + ", valor=" + valor
+				+ ", vehiculo=" + vehiculo + ", comentario=" + comentario + ", intervino=" + intervino + ", cpTitular="
+				+ cpTitular + ", nombreTitular=" + nombreTitular + ", direccionTitular=" + direccionTitular
+				+ ", localidadTitular=" + localidadTitular + ", provinciaTitular=" + provinciaTitular + ", dniTitular="
+				+ dniTitular + "]";
+	}
+	
+	
+	
+
 	
 	
 

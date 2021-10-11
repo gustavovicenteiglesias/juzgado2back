@@ -55,7 +55,7 @@ public class InfracionesController {
 	      @RequestParam(defaultValue = "dni") String campo,
 	      @RequestParam(defaultValue = "0") int page,
 	      @RequestParam(defaultValue = "5") int size,
-	      @RequestParam(defaultValue = "id,desc") String[] sort) {
+	      @RequestParam(defaultValue = "fecha,desc") String[] sort) {
 
 	    try {
 	      List<Order> orders = new ArrayList<Order>();
@@ -109,12 +109,13 @@ public class InfracionesController {
 
 	      return new ResponseEntity<>(response, HttpStatus.OK);
 	    } catch (Exception e) {
+	    	System.out.println(e);
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	  }
 
-	  @GetMapping("/infraciones/{id}")
-	  public ResponseEntity<Infraccione> getTutorialById(@PathVariable("id") int id) {
+	   @GetMapping("/infraciones/{id}")
+	  public ResponseEntity<Infraccione> getTutorialById(@PathVariable("id") Long id) {
 	    Optional<Infraccione> tutorialData = infracionesRepository.findById(id);//tutorialRepository.findById(id);
 
 	    if (tutorialData.isPresent()) {
@@ -124,8 +125,8 @@ public class InfracionesController {
 	    }
 	  }
 	  
-	  @PutMapping("/infraciones/{id}")
-	  public ResponseEntity<Infraccione> updateTutorial(@PathVariable("id") int id, @RequestBody Infraccione tutorial) {
+	 @PutMapping("/infraciones/{id}")
+	  public ResponseEntity<Infraccione> updateTutorial(@PathVariable("id") Long id, @RequestBody Infraccione tutorial) {
 	    Optional<Infraccione> tutorialData = infracionesRepository.findById(id);
 
 	    if (tutorialData.isPresent()) {
@@ -151,6 +152,15 @@ public class InfracionesController {
 	    _tutorial.setValor(tutorial.getValor());
 	    _tutorial.setComentario(tutorial.getComentario());
 	    _tutorial.setIntervino(tutorial.getIntervino());
+	    _tutorial.setNombreTitular(tutorial.getNombreTitular());
+	    _tutorial.setDireccionTitular(tutorial.getDireccion());
+	    _tutorial.setLocalidadTitular(tutorial.getLocalidadTitular());
+	    _tutorial.setCpTitular(tutorial.getCpTitular());
+	    _tutorial.setProvinciaTitular(tutorial.getProvinciaTitular());
+	    _tutorial.setDniTitular(tutorial.getDniTitular());
+	    _tutorial.setUnidadValor(tutorial.getUnidadValor());
+	    
+	    
 	     
 	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.OK);
 	    } else {
@@ -183,13 +193,21 @@ public class InfracionesController {
 		    _tutorial.setValor(tutorial.getValor());
 		    _tutorial.setComentario(tutorial.getComentario());
 		    _tutorial.setIntervino(tutorial.getIntervino());
+		    _tutorial.setNombreTitular(tutorial.getNombreTitular());
+		    _tutorial.setDireccionTitular(tutorial.getDireccion());
+		    _tutorial.setLocalidadTitular(tutorial.getLocalidadTitular());
+		    _tutorial.setCpTitular(tutorial.getCpTitular());
+		    _tutorial.setProvinciaTitular(tutorial.getProvinciaTitular());
+		    _tutorial.setDniTitular(tutorial.getDniTitular());
+		    _tutorial.setUnidadValor(tutorial.getUnidadValor());
+		    
 	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.CREATED);
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	  }
 	  @DeleteMapping("/infraciones/{id}")
-	  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") int id) {
+	  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") Long id) {
 	    try {
 	    	infracionesRepository.deleteById(id);
 	      return new ResponseEntity<>(HttpStatus.NO_CONTENT);

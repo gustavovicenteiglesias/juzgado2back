@@ -11,7 +11,7 @@ import com.bezkoder.spring.data.jpa.pagingsorting.model.Infraccione;
 
 
 
-public interface InfracionesRepository extends JpaRepository<Infraccione,Integer> {
+public interface InfracionesRepository extends JpaRepository<Infraccione,Long> {
 	Page<Infraccione> findByNombreContaining(String nombre, Pageable pageable);
 	Page<Infraccione> findByDniContaining(String dni, Pageable pageable);
 	Page<Infraccione> findByActaContaining(String acta, Pageable pageable);
