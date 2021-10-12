@@ -18,6 +18,8 @@ public class Infraccione implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	private String causa;
 
 	private String acta;
 
@@ -92,14 +94,15 @@ public class Infraccione implements Serializable {
 	@Column(name="titular_dni")
 	private String dniTitular;
 
-	public Infraccione(Long id, String acta, String actoResolutorio, String agente, String articulo, String chasis,
-			String codigoPostal, String descripcion, String direccion, String dni, String dominio, Date fecha,
-			Date fechaResolucion, String inciso, String leyOrdenanza, String localidad, String lugar, String motor,
-			String nombre, String provincia, float unidadValor, String valor, String vehiculo, String comentario,
-			String intervino, String cpTitular, String nombreTitular, String direccionTitular, String localidadTitular,
-			String provinciaTitular, String dniTitular) {
+	public Infraccione(Long id, String causa, String acta, String actoResolutorio, String agente, String articulo,
+			String chasis, String codigoPostal, String descripcion, String direccion, String dni, String dominio,
+			Date fecha, Date fechaResolucion, String inciso, String leyOrdenanza, String localidad, String lugar,
+			String motor, String nombre, String provincia, Float unidadValor, String valor, String vehiculo,
+			String comentario, String intervino, String cpTitular, String nombreTitular, String direccionTitular,
+			String localidadTitular, String provinciaTitular, String dniTitular) {
 		super();
 		this.id = id;
+		this.causa = causa;
 		this.acta = acta;
 		this.actoResolutorio = actoResolutorio;
 		this.agente = agente;
@@ -142,6 +145,14 @@ public class Infraccione implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCausa() {
+		return causa;
+	}
+
+	public void setCausa(String causa) {
+		this.causa = causa;
 	}
 
 	public String getActa() {
@@ -296,11 +307,11 @@ public class Infraccione implements Serializable {
 		this.provincia = provincia;
 	}
 
-	public float getUnidadValor() {
+	public Float getUnidadValor() {
 		return unidadValor;
 	}
 
-	public void setUnidadValor(float unidadValor) {
+	public void setUnidadValor(Float unidadValor) {
 		this.unidadValor = unidadValor;
 	}
 
@@ -386,19 +397,18 @@ public class Infraccione implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Infraccione [id=" + id + ", acta=" + acta + ", actoResolutorio=" + actoResolutorio + ", agente="
-				+ agente + ", articulo=" + articulo + ", chasis=" + chasis + ", codigoPostal=" + codigoPostal
-				+ ", descripcion=" + descripcion + ", direccion=" + direccion + ", dni=" + dni + ", dominio=" + dominio
-				+ ", fecha=" + fecha + ", fechaResolucion=" + fechaResolucion + ", inciso=" + inciso + ", leyOrdenanza="
-				+ leyOrdenanza + ", localidad=" + localidad + ", lugar=" + lugar + ", motor=" + motor + ", nombre="
-				+ nombre + ", provincia=" + provincia + ", unidadValor=" + unidadValor + ", valor=" + valor
-				+ ", vehiculo=" + vehiculo + ", comentario=" + comentario + ", intervino=" + intervino + ", cpTitular="
-				+ cpTitular + ", nombreTitular=" + nombreTitular + ", direccionTitular=" + direccionTitular
-				+ ", localidadTitular=" + localidadTitular + ", provinciaTitular=" + provinciaTitular + ", dniTitular="
-				+ dniTitular + "]";
+		return "Infraccione [id=" + id + ", causa=" + causa + ", acta=" + acta + ", actoResolutorio=" + actoResolutorio
+				+ ", agente=" + agente + ", articulo=" + articulo + ", chasis=" + chasis + ", codigoPostal="
+				+ codigoPostal + ", descripcion=" + descripcion + ", direccion=" + direccion + ", dni=" + dni
+				+ ", dominio=" + dominio + ", fecha=" + fecha + ", fechaResolucion=" + fechaResolucion + ", inciso="
+				+ inciso + ", leyOrdenanza=" + leyOrdenanza + ", localidad=" + localidad + ", lugar=" + lugar
+				+ ", motor=" + motor + ", nombre=" + nombre + ", provincia=" + provincia + ", unidadValor="
+				+ unidadValor + ", valor=" + valor + ", vehiculo=" + vehiculo + ", comentario=" + comentario
+				+ ", intervino=" + intervino + ", cpTitular=" + cpTitular + ", nombreTitular=" + nombreTitular
+				+ ", direccionTitular=" + direccionTitular + ", localidadTitular=" + localidadTitular
+				+ ", provinciaTitular=" + provinciaTitular + ", dniTitular=" + dniTitular + "]";
 	}
-	
-	
+
 	
 
 	

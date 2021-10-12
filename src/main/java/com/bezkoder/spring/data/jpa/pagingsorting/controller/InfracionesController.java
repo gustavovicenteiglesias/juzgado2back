@@ -55,7 +55,7 @@ public class InfracionesController {
 	      @RequestParam(defaultValue = "dni") String campo,
 	      @RequestParam(defaultValue = "0") int page,
 	      @RequestParam(defaultValue = "5") int size,
-	      @RequestParam(defaultValue = "fecha,desc") String[] sort) {
+	      @RequestParam(defaultValue = "causa,desc") String[] sort) {
 
 	    try {
 	      List<Order> orders = new ArrayList<Order>();
@@ -159,6 +159,7 @@ public class InfracionesController {
 	    _tutorial.setProvinciaTitular(tutorial.getProvinciaTitular());
 	    _tutorial.setDniTitular(tutorial.getDniTitular());
 	    _tutorial.setUnidadValor(tutorial.getUnidadValor());
+	    _tutorial.setCausa(tutorial.getCausa());
 	    
 	    
 	     
@@ -170,6 +171,8 @@ public class InfracionesController {
 	  
 	  @PostMapping("/infraciones")
 	  public ResponseEntity<Infraccione> createTutorial(@RequestBody Infraccione tutorial) {
+		  Optional<Infraccione> infraccion= infracionesRepository.findByLastCausa();
+		  int causa = Integer.parseInt(infraccion.get().getCausa())+1;         
 	    try {
 	      Infraccione _tutorial = new Infraccione();
 	      _tutorial.setActa(tutorial.getActa());
@@ -200,6 +203,7 @@ public class InfracionesController {
 		    _tutorial.setProvinciaTitular(tutorial.getProvinciaTitular());
 		    _tutorial.setDniTitular(tutorial.getDniTitular());
 		    _tutorial.setUnidadValor(tutorial.getUnidadValor());
+		    _tutorial.setCausa(Integer.toString(causa));
 		    
 	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.CREATED);
 	    } catch (Exception e) {
