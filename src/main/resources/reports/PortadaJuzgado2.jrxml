@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PortadaJuzgado2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6d04d25f-bb3d-490a-b65a-bfa9fce05941">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="causa" class="java.lang.String"/>
+	<parameter name="anio" class="java.lang.String"/>
+	<parameter name="acto_resolutorio" class="java.lang.String"/>
+	<parameter name="acta" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="articulo" class="java.lang.String"/>
+	<parameter name="ley_ordenanza" class="java.lang.String"/>
+	<parameter name="fecha" class="java.util.Date"/>
+	<parameter name="descripcion" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="107" splitType="Stretch">
+			<staticText>
+				<reportElement x="335" y="38" width="55" height="30" uuid="d1f9308b-f9bf-43ee-9bdc-ad7130b5f4cf"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="16"/>
+				</textElement>
+				<text><![CDATA[Causa:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="390" y="38" width="100" height="30" uuid="1d630350-6402-49c8-95b2-0a8eaeaebcfc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="20" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="10" y="0" width="100" height="100" uuid="c3f9d34a-3472-441f-82d4-eaabce4b2d80">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["http://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="7" width="480" height="73" uuid="dcdefbae-7926-4868-b589-cc26d53525b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUZGADO DE FALTAS MUNICIPAL N°2 DE SAN ANTONIO DE ARECO ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="8" width="100" height="30" uuid="1b906bbe-8797-453d-8f81-b7a919c825db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="8" width="100" height="30" uuid="66f00422-7f70-453d-b793-644266b7fb64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{anio}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="130" y="50" width="300" height="30" uuid="9e6e401c-d677-450e-99c1-724ac6b314a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECRETARIA  UNICA
+
+]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="256" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="20" width="100" height="40" uuid="89f01974-7838-4692-aaae-9ac6ac429ff7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[ACTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="80" width="100" height="40" uuid="ec37b491-fb0b-42c5-a1a2-b26feb442b13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[IMPUTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="140" width="100" height="40" uuid="ff1b5adc-fab5-4185-a2bc-e6724ca3dc82">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[FALTA ART.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="200" width="100" height="40" uuid="5d30b48f-713b-44c6-8ac9-942f8e3ff8d0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[DESCRIPCION
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="140" width="100" height="40" uuid="cd2425b9-1331-4ee2-b2de-b7da89052e5b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[LEY]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="20" width="420" height="40" uuid="deb93602-52e2-4b4b-bab6-a1b35c3ff3b1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{acta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="80" width="420" height="40" uuid="30aa0831-bddd-42ad-910f-1f956a04ad3b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="130" y="140" width="150" height="40" uuid="3be7fedb-c21b-49b5-ba08-f945a9204a82">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="140" width="170" height="40" uuid="43d8b71f-bad6-4339-9d23-b9695713eb55">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ley_ordenanza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="200" width="420" height="40" uuid="91779064-e7ca-4305-bd74-ece4a270ac0b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="80" y="8" width="400" height="30" uuid="0c43b318-0a81-45ab-a852-73cac609360b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{acto_resolutorio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="56" splitType="Stretch">
+			<staticText>
+				<reportElement x="30" y="10" width="150" height="20" uuid="388d75c5-5332-4f3f-9db4-38aa63569784">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<text><![CDATA[FECHA INFRACCION]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="190" y="10" width="360" height="20" uuid="f87d15eb-d74c-4a15-b368-b542745a5bca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
