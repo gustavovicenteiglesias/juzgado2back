@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cedula" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="120133cc-6626-4d52-8694-cad8bd6144d4">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="direccion" class="java.lang.String"/>
+	<parameter name="localidad" class="java.lang.String"/>
+	<parameter name="provincia" class="java.lang.String"/>
+	<parameter name="inciso" class="java.lang.String"/>
+	<parameter name="ley_ordenanza" class="java.lang.String"/>
+	<parameter name="articulo" class="java.lang.String"/>
+	<parameter name="causa" class="java.lang.String"/>
+	<parameter name="acta" class="java.lang.String"/>
+	<parameter name="dominio" class="java.lang.String"/>
+	<parameter name="codigo_postal" class="java.lang.String"/>
+	<parameter name="fecha" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="119" splitType="Stretch">
+			<image>
+				<reportElement x="10" y="8" width="100" height="100" uuid="429918a1-fe74-4ccc-a750-24c751df46d9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["http://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="130" y="10" width="431" height="21" uuid="df8741b6-0f22-4089-8487-78849319ca67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUNICIPALIDAD DE SAN ANTONIO DE ARECO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="31" width="431" height="21" uuid="ede74141-84c1-49cf-8725-5f6bebaecc91"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JUZGADO DE FALTAS Nº 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="130" y="52" width="431" height="21" uuid="ffe54d32-093f-4025-a6b4-f9eee7db1ff6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATHEU 362 - C.P 2760 - SAN ANTONIO DE ARECO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="73" width="431" height="21" forecolor="#269DD4" uuid="2bed2651-f959-419f-9bb0-434c249fa45f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["email: juzgadodefaltas2areco@gmail.com "]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="7" width="550" height="23" uuid="bca92777-1c0e-4845-8500-d0e75bfebcab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CEDULA DE NOTIFICACION]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="70" height="19" uuid="0dab5d69-42e8-41a4-82c3-1b9379b56483"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[SEÑOR/A: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="19" width="70" height="19" uuid="ac6d6a4e-aad3-477f-bff6-b363315d2e6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[DOMICILIO: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="70" height="19" uuid="ef65e3e8-bee3-4f0f-8166-5c2ed76843af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[LOCALIDAD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="60" width="70" height="19" uuid="1d6a5ca2-4ab1-4885-b7ae-838f78b76497"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[PROVINCIA: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="70" height="20" uuid="af9d3984-765e-448d-a04a-d287d1d12fe6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[INFRACCION: ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="380" y="0" width="180" height="79" uuid="4ba577b4-075a-4521-8541-13a4519ceb2d"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="380" y="20" width="100" height="20" uuid="657d47bd-368c-4333-9519-0c7c5151f71a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[CAUSA: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="40" width="100" height="20" uuid="d3ba7beb-f179-46f5-8ad0-b24a9999ac0a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[ACTA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="60" width="100" height="18" uuid="bc91fed4-c168-44dd-8685-1b4ced3b8687"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[DOMINIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="80" width="90" height="18" uuid="167bfc86-237b-4468-a9b4-3bc29f0a594d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[CP:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="0" width="310" height="20" uuid="2e3dd409-d6e7-46bb-87ad-e87e0863b44c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="20" width="310" height="19" uuid="92a57bc8-5c1e-427c-99f7-9974b2120415"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="40" width="310" height="19" uuid="0b773c4e-9872-479b-b339-e0c2ccdc3ffb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{localidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="60" width="310" height="19" uuid="f3132463-b896-4065-b563-d47ec6385882"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{provincia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="80" width="170" height="19" uuid="b5c1c1a8-5ec0-4ecc-9531-3fbb8fcc388c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{articulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="80" width="139" height="19" uuid="c17ffbec-560c-4beb-9e1b-bb96ac1d2408"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ley_ordenanza}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="20" width="80" height="20" uuid="a844e44f-d55f-4d21-a71d-e676a82b74fc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="40" width="80" height="20" uuid="ad505dd2-abc7-44aa-ba8b-2fa8f6e47fa1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{acta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="60" width="80" height="20" uuid="a5b73aeb-65a6-4ee7-aaca-daea2e7e3afa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dominio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="80" width="90" height="19" uuid="2e8f96bd-e90d-46c3-9035-a33b72674a3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{codigo_postal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="416" splitType="Stretch">
+			<rectangle>
+				<reportElement x="60" y="0" width="430" height="400" uuid="ecf9453d-7527-40f0-bd19-72c97660c876"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="60" y="0" width="430" height="340" uuid="8b9edff3-41ae-4d2d-aa08-c649e9228f26">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+					<property name="com.jaspersoft.studio.unit.rightIndent" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Arial" isItalic="false" isStrikeThrough="false"/>
+					<paragraph lineSpacing="1_1_2" lineSpacingSize="1.0" leftIndent="10" rightIndent="10"/>
+				</textElement>
+				<text><![CDATA[Por medio de la presente, se notifica a Ud. por disposición del Dr. José Julio Cagnoni, titular del Juzgado de Faltas nº 2 de San Antonio de Areco, que atento el Acta Única de Infracción que origina los presentes actuados, y conforme lo establece el art. 35 inc. g) de la ley 13.927, se le notifica la infracción constatada. A tal efecto, se acompaña copia del acta labrada que da origen a éstas actuaciones y asimismo se le hace saber que podrá optar: a) Por el beneficio del pago voluntario correspondiente al cincuenta por ciento (50%) del valor de la multa prevista para esta infracción (art. 85 inc. a) de la Ley 24.449 modif. por Ley 26.363, la que tendrá los efectos de sanción firme; disponiendo para ello de un plazo de treinta (30) días contados a partir de notificada la presente;b) Para el caso de no acogerse a este beneficio y vencido dicho plazo, no existiendo constancia de su acogimiento, pago y allanamiento, queda emplazado a comparecer al asiento de este Juzgado de Faltas Nº 2 de San Antonio de Areco, sito en calle Matheu Nº 362 de este medio, dentro de los quince (15) días contados a partir del día siguiente del vencimiento del plazo para el pago voluntario, a efectos de ejercer su derecho de defensa, ofrecer y producir en el mismo acto la prueba de que intente valerse, bajo apercibimiento de presumirse su responsabilidad y ser declarado rebelde, en cuyo caso se dictará resolución que será anotada en el R.U.I.T. (Registro Único de Infractores de Tránsito). Podrá ser asistido por un letrado, rigiendo el principio de formalismo moderado (art. 46 Dec. Ley 8751/77 y sus modif. y art. 35 inc. d) ap. 1) de la Ley Provincial Nº 13927).Para el caso de resultar ser menor de edad y teniendo en cuenta que la responsabilidad civil reposa sobre sus progenitores éstos deberán acompañarlo.Notifíquese.-----------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="340" width="430" height="30" uuid="7c8a76b1-9d4c-4aa1-a0c7-46617621c334">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[QUEDA UD. DEBIDAMENTE NOTIFICADO E INTIMADO.-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="370" width="430" height="30" uuid="3471393d-9180-487f-9c82-120d3ec4a152">
+					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Calibri"/>
+					<paragraph leftIndent="10"/>
+				</textElement>
+				<text><![CDATA[HORARIOS DE ATENCIÓN LUNES A VIERNES DE 8,15 A 12,30 HS.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="225" y="10" width="144" height="20" uuid="735d4e0a-f16a-4020-84ae-84c9a5d71aed"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<text><![CDATA[San Antonio de Areco,]]></text>
+			</staticText>
+			<textField pattern="dd  MMMMM  yyyy">
+				<reportElement x="370" y="10" width="140" height="20" uuid="ccc5eaa0-5176-4c5d-b198-cb2fd07292f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Calibri" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
