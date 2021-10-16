@@ -53,7 +53,7 @@
 			<textField>
 				<reportElement x="130" y="73" width="431" height="21" forecolor="#269DD4" uuid="2bed2651-f959-419f-9bb0-434c249fa45f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="10" isBold="true"/>
+					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["email: juzgadodefaltas2areco@gmail.com "]]></textFieldExpression>
 			</textField>
@@ -249,7 +249,7 @@
 					<property name="com.jaspersoft.studio.unit.leftIndent" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Calibri"/>
+					<font fontName="Arial" size="8"/>
 					<paragraph leftIndent="10"/>
 				</textElement>
 				<text><![CDATA[HORARIOS DE ATENCIÓN LUNES A VIERNES DE 8,15 A 12,30 HS.]]></text>
@@ -261,7 +261,7 @@
 			<staticText>
 				<reportElement x="225" y="10" width="144" height="20" uuid="735d4e0a-f16a-4020-84ae-84c9a5d71aed"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<text><![CDATA[San Antonio de Areco,]]></text>
 			</staticText>
