@@ -219,7 +219,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="416" splitType="Stretch">
+		<band height="400" splitType="Stretch">
 			<rectangle>
 				<reportElement x="60" y="0" width="430" height="400" uuid="ecf9453d-7527-40f0-bd19-72c97660c876"/>
 			</rectangle>
@@ -270,7 +270,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy ",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
