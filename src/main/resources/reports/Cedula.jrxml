@@ -149,70 +149,70 @@
 			<textField>
 				<reportElement x="70" y="0" width="310" height="20" uuid="2e3dd409-d6e7-46bb-87ad-e87e0863b44c"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="70" y="20" width="310" height="19" uuid="92a57bc8-5c1e-427c-99f7-9974b2120415"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{direccion}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="70" y="40" width="310" height="19" uuid="0b773c4e-9872-479b-b339-e0c2ccdc3ffb"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{localidad}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="70" y="60" width="310" height="19" uuid="f3132463-b896-4065-b563-d47ec6385882"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{provincia}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="70" y="80" width="170" height="19" uuid="b5c1c1a8-5ec0-4ecc-9531-3fbb8fcc388c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{articulo}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="80" width="139" height="19" uuid="c17ffbec-560c-4beb-9e1b-bb96ac1d2408"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ley_ordenanza}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="480" y="20" width="80" height="20" uuid="a844e44f-d55f-4d21-a71d-e676a82b74fc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="480" y="40" width="80" height="20" uuid="ad505dd2-abc7-44aa-ba8b-2fa8f6e47fa1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{acta}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="480" y="60" width="80" height="20" uuid="a5b73aeb-65a6-4ee7-aaca-daea2e7e3afa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{dominio}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="470" y="80" width="90" height="19" uuid="2e8f96bd-e90d-46c3-9035-a33b72674a3a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{codigo_postal}]]></textFieldExpression>
 			</textField>
@@ -268,7 +268,7 @@
 			<textField pattern="dd  MMMMM  yyyy">
 				<reportElement x="370" y="10" width="140" height="20" uuid="ccc5eaa0-5176-4c5d-b198-cb2fd07292f2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Calibri" size="11"/>
+					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
