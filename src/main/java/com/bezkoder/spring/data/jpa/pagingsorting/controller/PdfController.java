@@ -14,8 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -32,7 +31,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 
-
+@CrossOrigin(origins = "*")
 @RestController
 
 
@@ -72,6 +71,33 @@ public class PdfController {
 	    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 	}
 	 
+@GetMapping(value = "/api/cedula/{id}")
 	
+	public void getDocumentcedula(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
+	
+		Infraccione infraccion= infracionesRepository.findById(id).get();
+		InputStream jasperStream = this.getClass().getResourceAsStream("/reports/Cedula.jrxml");
+		Map <String,Object> para = new HashMap<>();
+		para.put("causa", infraccion.getCausa());
+		para.put("nombre", infraccion.getNombre());
+		para.put("acta", infraccion.getActa());
+		para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+		para.put("articulo", infraccion.getArticulo());
+		para.put("dominio",infraccion.getDominio());
+		para.put("fecha", infraccion.getFecha());
+		para.put("direccion", infraccion.getDireccion());
+		para.put("localidad", infraccion.getLocalidad());
+		para.put("provincia", infraccion.getProvincia());
+		para.put("codigo_postal", infraccion.getCodigoPostal());
+		
+		JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
+		
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "inline; filename=abono"+id+".pdf;");
+		
+		final OutputStream outStream = response.getOutputStream();
+	    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+	}
 	
 }
