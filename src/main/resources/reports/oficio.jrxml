@@ -2,6 +2,15 @@
 <!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="oficio" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a2aef13c-53f4-4f00-b48e-594c53182fcf">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="acta" class="java.lang.String"/>
+	<parameter name="causa" class="java.lang.String"/>
+	<parameter name="dominio" class="java.lang.String"/>
+	<parameter name="vehiculo" class="java.lang.String"/>
+	<parameter name="motor" class="java.lang.String"/>
+	<parameter name="chasis" class="java.lang.String"/>
+	<parameter name="ley_ordenanza" class="java.lang.String"/>
+	<parameter name="nombre" class="java.lang.String"/>
+	<parameter name="dni" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -9,24 +18,279 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="108" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<image>
+				<reportElement x="10" y="8" width="100" height="100" uuid="f3038e18-3a4f-4e05-ad43-70249ccb56e2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["http://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="269" y="20" width="281" height="71" uuid="92f163c8-5c52-431f-bdc1-18c7fdb518b4"/>
+				<graphicElement>
+					<pen lineWidth="2.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="280" y="20" width="100" height="30" uuid="e3df9bd8-9a3b-4965-b834-7cddd7e23b90"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CAUSA       N°:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="60" width="100" height="30" uuid="35b38c4d-dc86-4dff-bf7d-47724fb23b27"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTA          N°:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="20" width="165" height="30" uuid="ea42c220-a171-4175-9d8e-6d590e909834"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="380" y="60" width="165" height="30" uuid="4b12f89c-c0f4-4282-840d-8dcdde194be1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{acta}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="45" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="0" y="7" width="550" height="33" uuid="262bdc83-f1e5-459f-8aa1-35d027fc8377"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[OFICIO]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="225" y="10" width="144" height="20" uuid="7b75cdc7-09a6-4a27-8011-86e19a4cac04"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<text><![CDATA[San Antonio de Areco,]]></text>
+			</staticText>
+			<textField pattern="dd  MMMMM  yyyy">
+				<reportElement x="370" y="10" width="140" height="20" uuid="9205aad7-4764-4602-8411-30c7fe3a4813"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy ",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="574" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="10" width="150" height="20" uuid="8a0c36e1-cd2b-49ba-9c41-03299b2baaf6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[A POLICIA COMUNAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="30" width="150" height="20" uuid="c4744027-0be2-480b-8243-539787bba82d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[S/D]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="70" width="500" height="80" uuid="034104f0-3e9e-4c0b-a275-acd90869990f"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[					Tengo el agrado de dirigirme a Ud. en los autos caratulados S.FALTA ley 13927/24449 ARTICULOS N° 				por ante Juzgado Municipal de Faltas de San Antonio de Areco , a mi cargo , a efectos de solicitarle en tramite tenga a bien de entregar en el dia de la fecha al SR/SRA autorizado a efectos de retirar el vehiculo .]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="80" width="140" height="20" uuid="81f76e4f-1411-4d13-a69b-f7585fdf03fb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ley_ordenanza}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="150" width="100" height="20" uuid="424c83df-5af1-48b9-a558-7d4af1ce93f3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="170" width="100" height="20" uuid="52217d48-fd47-42ed-b172-6a5752f78b57"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[DNI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="190" width="140" height="20" uuid="2fc9b977-c6e3-42fb-9fee-cb25c46ffb2c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[VEHICULO/MODELO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="210" width="100" height="20" uuid="89b40f57-065e-4e11-8411-b5e7a0451154"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[DOMINIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="230" width="100" height="20" uuid="854d96d6-5eb8-4b3e-a5c6-8be6092aad3e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[N° MOTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="250" width="100" height="20" uuid="208e2b91-9e74-429d-9267-1721f0821ed0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[N° CHASIS:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="70" y="150" width="410" height="20" uuid="26a5b3a6-08be-4415-9d92-81cff84e08cd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="40" y="170" width="440" height="20" uuid="58cc985a-80b7-4374-a615-fd05da64516b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dni}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="137" y="190" width="342" height="20" uuid="a2167c2b-ea6c-488f-9c90-097aeb186e91"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vehiculo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="70" y="210" width="410" height="20" uuid="9dac70ac-72e7-49fa-b041-8eeb543e8760"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{dominio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="80" y="230" width="400" height="20" uuid="a77d39c2-4244-4b07-8830-8c010a2eb55a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{motor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="80" y="250" width="400" height="20" uuid="e127eefe-81bc-4a1e-bc12-6c7da7028c09"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{chasis}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="11" y="280" width="499" height="30" uuid="d951b794-8619-4e05-bb8d-0dc913bf00ed"/>
+				<textElement>
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES: El vehiculo sera entregado dentro de la 24 hs. Despues de ser proporcionado el presente oficio ante quien corresponda .]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="320" width="499" height="19" uuid="a069ac66-97c6-4d87-9df3-3e339e157a11"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[El mismo sera retirado unicamente: .Por acarreo . Con dominio colocado .Con silenciador colocado ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="350" width="270" height="19" uuid="a36e758e-a5e8-423d-9ae5-ed2ea9c9d4b4"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[FECHA ENTREGA VEHICULO SECUESTRADO ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="369" width="270" height="19" uuid="ecfde114-c212-4df3-a046-cdd0ae786dc3"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[NOMBRE DE RESPONSABLE DE LA ENTREGA ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="440" width="270" height="19" uuid="910a21e6-1da8-4cae-b36b-c6eedd3a88b1"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[RECIBIO VEHICULO SECUESTRO	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="470" width="270" height="19" uuid="c657081d-5971-4d5e-a249-7294d6a574a5"/>
+				<textElement>
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[ACLARACION DE FIRMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="350" width="270" height="19" uuid="62a7bb41-6dfa-4844-b096-54c0b183387f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[---------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="400" width="270" height="19" uuid="9164e72d-900f-49cf-b4dc-45579a261ee8"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[---------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="369" width="270" height="19" uuid="697dc69f-1d77-4158-87da-888cc6b7525e"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[---------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="440" width="270" height="19" uuid="b22619ec-29e3-4465-8680-b6db79560e9d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[---------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="470" width="270" height="19" uuid="cbc6934e-57c4-4910-b23d-f4416c7a5c23"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial" size="11"/>
+				</textElement>
+				<text><![CDATA[---------------------------------------------------------------------]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="544" width="268" height="30" uuid="e0b52832-47ea-4b38-8bd8-566f4dec07f6"/>
+				<textElement>
+					<font fontName="Arial" size="8"/>
+				</textElement>
+				<text><![CDATA[	IMPORTANTE DEVOLVER COPIA AL JUZGADO DE FALTAS]]></text>
+			</staticText>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
-	<summary>
-		<band height="42" splitType="Stretch"/>
-	</summary>
 </jasperReport>
