@@ -163,6 +163,8 @@ public class InfracionesController {
 	    _tutorial.setDniTitular(tutorial.getDniTitular());
 	    _tutorial.setUnidadValor(tutorial.getUnidadValor());
 	    _tutorial.setCausa(tutorial.getCausa());
+	    _tutorial.setChasis(tutorial.getChasis());
+	    _tutorial.setMotor(tutorial.getMotor());
 	    
 	    
 	     
@@ -207,6 +209,8 @@ public class InfracionesController {
 		    _tutorial.setDniTitular(tutorial.getDniTitular());
 		    _tutorial.setUnidadValor(tutorial.getUnidadValor());
 		    _tutorial.setCausa(Integer.toString(causa));
+		    _tutorial.setChasis(tutorial.getChasis());
+		    _tutorial.setMotor(tutorial.getMotor());
 		    
 	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.CREATED);
 	    } catch (Exception e) {
