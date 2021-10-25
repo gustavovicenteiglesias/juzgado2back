@@ -156,7 +156,7 @@ public class InfracionesController {
 	    _tutorial.setComentario(tutorial.getComentario());
 	    _tutorial.setIntervino(tutorial.getIntervino());
 	    _tutorial.setNombreTitular(tutorial.getNombreTitular());
-	    _tutorial.setDireccionTitular(tutorial.getDireccion());
+	    _tutorial.setDireccionTitular(tutorial.getDireccionTitular());
 	    _tutorial.setLocalidadTitular(tutorial.getLocalidadTitular());
 	    _tutorial.setCpTitular(tutorial.getCpTitular());
 	    _tutorial.setProvinciaTitular(tutorial.getProvinciaTitular());
@@ -202,7 +202,7 @@ public class InfracionesController {
 		    _tutorial.setComentario(tutorial.getComentario());
 		    _tutorial.setIntervino(tutorial.getIntervino());
 		    _tutorial.setNombreTitular(tutorial.getNombreTitular());
-		    _tutorial.setDireccionTitular(tutorial.getDireccion());
+		    _tutorial.setDireccionTitular(tutorial.getDireccionTitular());
 		    _tutorial.setLocalidadTitular(tutorial.getLocalidadTitular());
 		    _tutorial.setCpTitular(tutorial.getCpTitular());
 		    _tutorial.setProvinciaTitular(tutorial.getProvinciaTitular());
