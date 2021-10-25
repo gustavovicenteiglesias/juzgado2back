@@ -158,5 +158,35 @@ public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") L
 	final OutputStream outStream = response.getOutputStream();
     JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 }
+
+@GetMapping(value = "/api/recibo/{id}")
+
+public void getDocumentrecibo(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
+
+	Infraccione infraccion= infracionesRepository.findById(id).get();
+	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
+	Map <String,Object> para = new HashMap<>();
+	para.put("causa", infraccion.getCausa());
+	para.put("nombre", infraccion.getNombre());
+	para.put("acta", infraccion.getActa());
+	para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+	para.put("articulo", infraccion.getArticulo());
+	para.put("inciso", infraccion.getInciso());
+	para.put("dni",infraccion.getDni());
+	para.put("fecha", infraccion.getFecha());
+	para.put("direccion", infraccion.getDireccion());
+	para.put("localidad", infraccion.getLocalidad());
+	para.put("provincia", infraccion.getProvincia());
+	para.put("valor", infraccion.getValor());
+	
+	JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
+	
+	response.setContentType("application/pdf");
+	response.addHeader("Content-Disposition", "inline; filename=cedulatitular"+id+".pdf;");
+	
+	final OutputStream outStream = response.getOutputStream();
+    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+}
 	
 }
