@@ -2,6 +2,10 @@ package com.bezkoder.spring.data.jpa.pagingsorting.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.Date;
 
 
@@ -93,13 +97,17 @@ public class Infraccione implements Serializable {
 	
 	@Column(name="titular_dni")
 	private String dniTitular;
+	
+	@OneToOne(mappedBy = "infracciones", cascade = CascadeType.ALL)
+	@JsonManagedReference(value="infracciones-convenio")
+	private Convenio convenio ;
 
 	public Infraccione(Long id, String causa, String acta, String actoResolutorio, String agente, String articulo,
 			String chasis, String codigoPostal, String descripcion, String direccion, String dni, String dominio,
 			Date fecha, Date fechaResolucion, String inciso, String leyOrdenanza, String localidad, String lugar,
 			String motor, String nombre, String provincia, Float unidadValor, String valor, String vehiculo,
 			String comentario, String intervino, String cpTitular, String nombreTitular, String direccionTitular,
-			String localidadTitular, String provinciaTitular, String dniTitular) {
+			String localidadTitular, String provinciaTitular, String dniTitular, Convenio convenio) {
 		super();
 		this.id = id;
 		this.causa = causa;
@@ -133,6 +141,7 @@ public class Infraccione implements Serializable {
 		this.localidadTitular = localidadTitular;
 		this.provinciaTitular = provinciaTitular;
 		this.dniTitular = dniTitular;
+		this.convenio = convenio;
 	}
 
 	public Infraccione() {
@@ -395,6 +404,14 @@ public class Infraccione implements Serializable {
 		this.dniTitular = dniTitular;
 	}
 
+	public Convenio getConvenio() {
+		return convenio;
+	}
+
+	public void setConvenio(Convenio convenio) {
+		this.convenio = convenio;
+	}
+
 	@Override
 	public String toString() {
 		return "Infraccione [id=" + id + ", causa=" + causa + ", acta=" + acta + ", actoResolutorio=" + actoResolutorio
@@ -406,9 +423,11 @@ public class Infraccione implements Serializable {
 				+ unidadValor + ", valor=" + valor + ", vehiculo=" + vehiculo + ", comentario=" + comentario
 				+ ", intervino=" + intervino + ", cpTitular=" + cpTitular + ", nombreTitular=" + nombreTitular
 				+ ", direccionTitular=" + direccionTitular + ", localidadTitular=" + localidadTitular
-				+ ", provinciaTitular=" + provinciaTitular + ", dniTitular=" + dniTitular + "]";
+				+ ", provinciaTitular=" + provinciaTitular + ", dniTitular=" + dniTitular + ", convenio=" + convenio
+				+ "]";
 	}
 
+	
 	
 
 	
