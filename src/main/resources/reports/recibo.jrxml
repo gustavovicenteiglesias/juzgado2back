@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="recibo" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="20" uuid="348388c7-660c-4779-b35f-211929fb3b76">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 	<property name="com.jaspersoft.studio.report.description" value=""/>
@@ -41,7 +41,7 @@
 				</reportElement>
 				<textFieldExpression><![CDATA[$P{valor}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="dd/mm/yyyy" isBlankWhenNull="true">
 				<reportElement x="476" y="94" width="90" height="14" uuid="cceac3d8-2699-448f-8569-4308d4ce4544">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -112,7 +112,7 @@
 				</reportElement>
 				<textFieldExpression><![CDATA[$P{articulo}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="476" y="506" width="90" height="14" uuid="b6c9a86a-ffac-4777-a7d8-e1131137b560">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -124,7 +124,7 @@
 				</reportElement>
 				<textFieldExpression><![CDATA[$P{valor}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField pattern="dd/mm/yyyy" isBlankWhenNull="true">
 				<reportElement x="476" y="520" width="90" height="14" uuid="fdeb74c8-8b07-4768-9182-fa7a0d30edb8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
