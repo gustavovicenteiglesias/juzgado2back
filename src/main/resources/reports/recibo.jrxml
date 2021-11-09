@@ -22,7 +22,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="700" splitType="Stretch">
+		<band height="670" splitType="Stretch">
 			<textField isBlankWhenNull="true">
 				<reportElement x="241" y="173" width="90" height="14" uuid="6b1427c9-3b56-4519-98e1-854621ab4259">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -45,7 +45,7 @@
 				<reportElement x="476" y="94" width="90" height="14" uuid="cceac3d8-2699-448f-8569-4308d4ce4544">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{fecha}.getDate()+"/"+($P{fecha}.getMonth()+1)+"/"+($P{fecha}.getYear()+1900)]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="170" y="108" width="396" height="14" uuid="ea0163d8-6e24-44b7-aeb5-291a0e6406e7">
@@ -189,7 +189,7 @@
 				</reportElement>
 				<textFieldExpression><![CDATA[$P{acta}]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/mm/yyyy" isBlankWhenNull="true">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="241" y="80" width="90" height="14" uuid="d5b67cd6-f194-41ac-a5b3-22fa2a35f9d3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>

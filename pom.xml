@@ -27,6 +27,20 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter</artifactId>
+        <exclusions>
+            <exclusion>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-logging</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-log4j2</artifactId>
+    </dependency>
 		
 		<!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
 		<dependency>
@@ -61,6 +75,17 @@
 					<artifactId>junit-vintage-engine</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		<dependency>
+		  <groupId>com.jcabi</groupId>
+		  <artifactId>jcabi-log</artifactId>
+		  <version>0.20.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.fusesource.jansi/jansi -->
+		<dependency>
+		    <groupId>org.fusesource.jansi</groupId>
+		    <artifactId>jansi</artifactId>
+		    <version>1.18</version>
 		</dependency>
 		
 		

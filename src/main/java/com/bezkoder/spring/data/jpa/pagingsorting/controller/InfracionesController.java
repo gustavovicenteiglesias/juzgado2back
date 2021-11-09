@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,8 +27,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bezkoder.spring.data.jpa.pagingsorting.model.Infraccione;
-import com.bezkoder.spring.data.jpa.pagingsorting.model.Tutorial;
+
 import com.bezkoder.spring.data.jpa.pagingsorting.repository.InfracionesRepository;
+import com.bezkoder.spring.data.jpa.pagingsorting.security.service.UserDetailsImpl;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -36,6 +39,7 @@ import com.bezkoder.spring.data.jpa.pagingsorting.repository.InfracionesReposito
 public class InfracionesController {
 	@Autowired
 	InfracionesRepository infracionesRepository;
+	
 	
 	
 	private Sort.Direction getSortDirection(String direction) {
@@ -119,8 +123,8 @@ public class InfracionesController {
 
 	   @GetMapping("/infraciones/{id}")
 	  public ResponseEntity<Infraccione> getTutorialById(@PathVariable("id") Long id) {
-	    Optional<Infraccione> tutorialData = infracionesRepository.findById(id);//tutorialRepository.findById(id);
-
+	    Optional<Infraccione> tutorialData = infracionesRepository.findById(id);
+	    
 	    if (tutorialData.isPresent()) {
 	      return new ResponseEntity<>(tutorialData.get(), HttpStatus.OK);
 	    } else {
@@ -165,8 +169,9 @@ public class InfracionesController {
 	    _tutorial.setCausa(tutorial.getCausa());
 	    _tutorial.setChasis(tutorial.getChasis());
 	    _tutorial.setMotor(tutorial.getMotor());
+	    _tutorial.setConvenio(tutorial.getConvenio());
 	    
-	    
+	   
 	     
 	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.OK);
 	    } else {
