@@ -31,6 +31,10 @@ public class Convenio implements Serializable {
 	
 	private Float valor_cuota;
 	
+	private Long nro_recibo; 
+	
+	private Boolean estado;
+	
 	
 	@OneToOne
 	@JoinColumn(name="FK_INFRACCIONES" ,updatable = false, nullable = false)
@@ -41,13 +45,17 @@ public class Convenio implements Serializable {
 	@JsonManagedReference(value="convenio-cuotas")
 	private List<PagosCuotas> cuotas;
 
-	public Convenio(Long id, Float anticipo, Integer cant_cuotas, Float valor_cuota, Infraccione infracciones,
-			List<PagosCuotas> cuotas) {
+	
+
+	public Convenio(Long id, Float anticipo, Integer cant_cuotas, Float valor_cuota, Long nro_recibo, Boolean estado,
+			Infraccione infracciones, List<PagosCuotas> cuotas) {
 		super();
 		this.id = id;
 		this.anticipo = anticipo;
 		this.cant_cuotas = cant_cuotas;
 		this.valor_cuota = valor_cuota;
+		this.nro_recibo = nro_recibo;
+		this.estado = estado;
 		this.infracciones = infracciones;
 		this.cuotas = cuotas;
 	}
@@ -102,6 +110,22 @@ public class Convenio implements Serializable {
 
 	public void setCuotas(List<PagosCuotas> cuotas) {
 		this.cuotas = cuotas;
+	}
+
+	public Long getNro_recibo() {
+		return nro_recibo;
+	}
+
+	public void setNro_recibo(Long nro_recibo) {
+		this.nro_recibo = nro_recibo;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 	

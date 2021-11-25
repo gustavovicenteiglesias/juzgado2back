@@ -30,6 +30,7 @@ import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -37,6 +38,8 @@ import net.sf.jasperreports.engine.JasperReport;
 
 
 public class PdfController {
+	@Autowired
+	DataSource datasource;
 	
 	 @Autowired
 	    protected DataSource localDataSource;
@@ -179,8 +182,105 @@ public void getDocumentrecibo(HttpServletResponse response,@PathVariable("id") L
 	para.put("provincia", infraccion.getProvincia());
 	para.put("valor", infraccion.getValor());
 	
+	
 	JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
 	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
+	
+	response.setContentType("application/pdf");
+	response.addHeader("Content-Disposition", "inline; filename=cedulatitular"+id+".pdf;");
+	
+	final OutputStream outStream = response.getOutputStream();
+    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+}
+
+@GetMapping(value = "/api/recibocuotas/{id}")
+
+public void getDocumentreciboCuotas(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
+
+	Infraccione infraccion= infracionesRepository.findById(id).get();
+	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
+	Map <String,Object> para = new HashMap<>();
+	para.put("causa", infraccion.getCausa());
+	para.put("nombre", infraccion.getNombre());
+	para.put("acta", infraccion.getActa());
+	para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+	para.put("articulo", infraccion.getArticulo());
+	para.put("inciso", infraccion.getInciso());
+	para.put("dni",infraccion.getDni());
+	para.put("fecha", infraccion.getFecha());
+	para.put("direccion", infraccion.getDireccion());
+	para.put("localidad", infraccion.getLocalidad());
+	para.put("provincia", infraccion.getProvincia());
+	para.put("valor", infraccion.getConvenio().getValor_cuota().toString());
+	
+	
+	
+	
+	JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
+	
+	response.setContentType("application/pdf");
+	response.addHeader("Content-Disposition", "inline; filename=cedulatitular"+id+".pdf;");
+	
+	final OutputStream outStream = response.getOutputStream();
+    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+}
+
+@GetMapping(value = "/api/reciboanticipo/{id}")
+
+public void getDocumentreciboAnticipo(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
+
+	Infraccione infraccion= infracionesRepository.findById(id).get();
+	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
+	Map <String,Object> para = new HashMap<>();
+	para.put("causa", infraccion.getCausa());
+	para.put("nombre", infraccion.getNombre());
+	para.put("acta", infraccion.getActa());
+	para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+	para.put("articulo", infraccion.getArticulo());
+	para.put("inciso", infraccion.getInciso());
+	para.put("dni",infraccion.getDni());
+	para.put("fecha", infraccion.getFecha());
+	para.put("direccion", infraccion.getDireccion());
+	para.put("localidad", infraccion.getLocalidad());
+	para.put("provincia", infraccion.getProvincia());
+	para.put("valor", infraccion.getConvenio().getAnticipo().toString());
+	
+	
+	
+	
+	JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
+	
+	response.setContentType("application/pdf");
+	response.addHeader("Content-Disposition", "inline; filename=cedulatitular"+id+".pdf;");
+	
+	final OutputStream outStream = response.getOutputStream();
+    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+}
+@GetMapping(value = "/api/convenio/{id}")
+
+public void getDocumentconvenio(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
+
+	Infraccione infraccion= infracionesRepository.findById(id).get();
+	InputStream jasperStream = getClass().getResourceAsStream("/reports/Convenio.jrxml");
+	Map <String,Object> para = new HashMap<>();
+	para.put("nro_causa", infraccion.getCausa());
+	para.put("nombre", infraccion.getNombre());
+	para.put("id_convenio", infraccion.getConvenio().getId());
+	para.put("valor_cuota", infraccion.getConvenio().getValor_cuota());
+	para.put("cant_cuotas", infraccion.getConvenio().getCant_cuotas());
+	para.put("anticipo", infraccion.getConvenio().getAnticipo());
+	para.put("dni",infraccion.getDni());
+	para.put("fecha", infraccion.getFecha());
+	para.put("domicilio", infraccion.getDireccion());
+	para.put("localidad", infraccion.getLocalidad());
+	para.put("provincia", infraccion.getProvincia());
+	para.put("valor", infraccion.getValor());
+	System.out.println(infraccion.getConvenio().getId());
+	
+	JasperReport jasperReport =JasperCompileManager.compileReport(jasperStream);// (JasperReport) JRLoader.loadObject(getClass().getResource("/reports/Convenio.jasper")); 
+	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,datasource.getConnection());
 	
 	response.setContentType("application/pdf");
 	response.addHeader("Content-Disposition", "inline; filename=cedulatitular"+id+".pdf;");
