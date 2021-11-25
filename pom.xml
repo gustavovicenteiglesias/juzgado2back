@@ -46,13 +46,8 @@
 		<dependency>
     <groupId>net.sf.jasperreports</groupId>
     <artifactId>jasperreports</artifactId>
-    <version>6.12.1</version>
-    <exclusions>
-        <exclusion>
-            <groupId>com.lowagie</groupId>
-            <artifactId>itext</artifactId>
-        </exclusion>
-    </exclusions>
+    <version>6.17.0</version>
+    
 </dependency>
 <!--        "jasperreports" can't resolve "itext" dependency on jenkins.so it added independently-->
 <dependency>
