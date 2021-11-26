@@ -140,11 +140,11 @@ AND N.id=$P{ID_CONVENIO}]]>
 				<text><![CDATA[SAN ANTONIO DE ARECO]]></text>
 			</staticText>
 			<textField pattern="MMMM d, yyyy">
-				<reportElement x="170" y="10" width="100" height="30" uuid="93c2dc8a-2ff6-4ca2-bc8a-31ae71d23399"/>
+				<reportElement x="170" y="10" width="187" height="30" uuid="93c2dc8a-2ff6-4ca2-bc8a-31ae71d23399"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif"/>
 				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[(new java.text.SimpleDateFormat("EEEEE dd MMMMM yyyy ",new Locale("es", "ES"))).format(new Date())]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="30" y="39" width="70" height="14" uuid="30aea221-fe27-49bc-84b5-6ca0ed0aeba1">
