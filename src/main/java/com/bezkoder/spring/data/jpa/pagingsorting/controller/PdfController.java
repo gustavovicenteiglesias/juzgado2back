@@ -151,6 +151,7 @@ public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") L
 	para.put("vehiculo", infraccion.getVehiculo());
 	para.put("motor", infraccion.getMotor());
 	para.put("chasis", infraccion.getChasis());
+	para.put("agente", infraccion.getAgente());
 	
 	JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
 	JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
