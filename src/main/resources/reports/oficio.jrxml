@@ -11,6 +11,7 @@
 	<parameter name="ley_ordenanza" class="java.lang.String"/>
 	<parameter name="nombre" class="java.lang.String"/>
 	<parameter name="dni" class="java.lang.String"/>
+	<parameter name="agente" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -64,7 +65,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="45" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="0" y="7" width="550" height="33" uuid="262bdc83-f1e5-459f-8aa1-35d027fc8377"/>
@@ -96,11 +97,11 @@
 	<detail>
 		<band height="574" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="10" width="150" height="20" uuid="8a0c36e1-cd2b-49ba-9c41-03299b2baaf6"/>
+				<reportElement x="11" y="10" width="29" height="20" uuid="8a0c36e1-cd2b-49ba-9c41-03299b2baaf6"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[A POLICIA COMUNAL]]></text>
+				<text><![CDATA[A ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="30" width="150" height="20" uuid="c4744027-0be2-480b-8243-539787bba82d"/>
@@ -291,6 +292,16 @@
 				</textElement>
 				<text><![CDATA[	IMPORTANTE DEVOLVER COPIA AL JUZGADO DE FALTAS]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="40" y="10" width="220" height="20" uuid="51386fcc-fc2a-421f-9b81-8f2d78be2eba">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{agente}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>
