@@ -182,7 +182,8 @@ public class InfracionesController {
 	  @PostMapping("/infraciones")
 	  public ResponseEntity<Infraccione> createTutorial(@RequestBody Infraccione tutorial) {
 		  Optional<Infraccione> infraccion= infracionesRepository.findByLastCausa();
-		  int causa = Integer.parseInt(infraccion.get().getCausa())+1;         
+		  int causa = Integer.parseInt(infraccion.get().getCausa())+1;
+
 	    try {
 	      Infraccione _tutorial = new Infraccione();
 	      _tutorial.setActa(tutorial.getActa());
@@ -216,6 +217,7 @@ public class InfracionesController {
 		    _tutorial.setCausa(Integer.toString(causa));
 		    _tutorial.setChasis(tutorial.getChasis());
 		    _tutorial.setMotor(tutorial.getMotor());
+
 		    
 	      return new ResponseEntity<>(infracionesRepository.save(_tutorial), HttpStatus.CREATED);
 	    } catch (Exception e) {
