@@ -115,17 +115,8 @@
 				<textElement textAlignment="Left">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[Tengo el agrado de dirigirme a Ud.(s) en el marco de la causa N°                                         s/ infracción a la Ley N° 24.449/13.927, de trámite por ante este Juzgado de Faltas N° 2 de San Antonio de Areco, a efectos de solicitarle(s) la entrega del vehículo oportunamente retenido y que a continuación se detalla, a su titular registral/ autorizado. -]]></text>
+				<text><![CDATA[Tengo el agrado de dirigirme a Ud.(s) en el marco de la causa N°               s/ infracción a la Ley N° 24.449/13.927, de trámite por ante este Juzgado de Faltas N° 2 de San Antonio de Areco, a efectos de solicitarle(s) la entrega del vehículo oportunamente retenido y que a continuación se detalla, a su titular registral/ autorizado. -]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="355" y="65" width="140" height="20" uuid="81f76e4f-1411-4d13-a69b-f7585fdf03fb">
-					<property name="com.jaspersoft.studio.unit.y" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{ley_ordenanza}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="10" y="150" width="100" height="20" uuid="424c83df-5af1-48b9-a558-7d4af1ce93f3"/>
 				<textElement verticalAlignment="Middle">
@@ -305,6 +296,13 @@
 					<font fontName="Arial" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{agente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="60" width="61" height="20" uuid="47a8e68c-30f0-4269-ac7d-3afa734dc69c"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{causa}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
