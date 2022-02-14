@@ -128,7 +128,7 @@
 				<reportElement x="476" y="520" width="90" height="14" uuid="fdeb74c8-8b07-4768-9182-fa7a0d30edb8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textFieldExpression><![CDATA[$P{fecha}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{fecha}.getDate()+"/"+($P{fecha}.getMonth()+1)+"/"+($P{fecha}.getYear()+1900)]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="170" y="534" width="396" height="14" uuid="8066c8ba-9146-4154-a305-8f0f722e7b9c">
@@ -197,7 +197,7 @@
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<textField pattern="dd/mm/yyyy" isBlankWhenNull="true">
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
 				<reportElement x="241" y="502" width="90" height="14" uuid="5206d8e9-d9f5-445d-be46-f74e9062d3be">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>

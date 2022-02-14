@@ -115,10 +115,12 @@
 				<textElement textAlignment="Left">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[					Tengo el agrado de dirigirme a Ud. en los autos caratulados S.FALTA ley 13927/24449 ARTICULOS N° 				por ante Juzgado Municipal de Faltas de San Antonio de Areco , a mi cargo , a efectos de solicitarle en tramite tenga a bien de entregar en el dia de la fecha al SR/SRA autorizado a efectos de retirar el vehiculo .]]></text>
+				<text><![CDATA[Tengo el agrado de dirigirme a Ud.(s) en el marco de la causa N°                                         s/ infracción a la Ley N° 24.449/13.927, de trámite por ante este Juzgado de Faltas N° 2 de San Antonio de Areco, a efectos de solicitarle(s) la entrega del vehículo oportunamente retenido y que a continuación se detalla, a su titular registral/ autorizado. -]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="310" y="80" width="140" height="20" uuid="81f76e4f-1411-4d13-a69b-f7585fdf03fb"/>
+				<reportElement x="355" y="65" width="140" height="20" uuid="81f76e4f-1411-4d13-a69b-f7585fdf03fb">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
@@ -216,11 +218,13 @@
 				<text><![CDATA[OBSERVACIONES: El vehiculo sera entregado dentro de la 24 hs. Despues de ser proporcionado el presente oficio ante quien corresponda .]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="10" y="320" width="499" height="19" uuid="a069ac66-97c6-4d87-9df3-3e339e157a11"/>
+				<reportElement x="11" y="315" width="499" height="30" uuid="a069ac66-97c6-4d87-9df3-3e339e157a11">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement>
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[El mismo sera retirado unicamente: .Por acarreo . Con dominio colocado .Con silenciador colocado ]]></text>
+				<text><![CDATA[El mismo será retirado únicamente: Por acarreo – con dominio colocado – con silenciador y escape – con autorización de circulación ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="350" width="270" height="19" uuid="a36e758e-a5e8-423d-9ae5-ed2ea9c9d4b4"/>
