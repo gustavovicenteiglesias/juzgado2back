@@ -141,13 +141,13 @@ public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") L
 	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/oficio.jrxml");
 	Map <String,Object> para = new HashMap<>();
 	para.put("causa", infraccion.getCausa());
-	para.put("nombre",infraccion.getNombre() +" / "+infraccion.getNombreTitular());
+	para.put("nombre",infraccion.getNombreTitular());
 	para.put("acta", infraccion.getActa());
 	para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
 	para.put("articulo", infraccion.getArticulo());
 	para.put("dominio",infraccion.getDominio());
 	para.put("fecha", infraccion.getFecha());
-	para.put("dni", infraccion.getDni());
+	para.put("dni", infraccion.getDniTitular());
 	para.put("vehiculo", infraccion.getVehiculo());
 	para.put("motor", infraccion.getMotor());
 	para.put("chasis", infraccion.getChasis());
