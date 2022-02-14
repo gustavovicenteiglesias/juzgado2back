@@ -298,7 +298,9 @@
 				<textFieldExpression><![CDATA[$P{agente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="350" y="60" width="61" height="20" uuid="47a8e68c-30f0-4269-ac7d-3afa734dc69c"/>
+				<reportElement x="350" y="63" width="61" height="20" uuid="47a8e68c-30f0-4269-ac7d-3afa734dc69c">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Arial" size="12"/>
 				</textElement>
