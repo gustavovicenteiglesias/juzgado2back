@@ -19,6 +19,8 @@ public interface InfracionesRepository extends JpaRepository<Infraccione,Long> {
 	Page<Infraccione> findByActaContaining(String acta, Pageable pageable);
 	Page<Infraccione> findByDominioContaining(String dominio, Pageable pageable);
 	Page<Infraccione> findByCausaContaining(String causa, Pageable pageable);
+	Page<Infraccione> findByNombreTitularContaining(String nombreTitular, Pageable pageable);
+	Page<Infraccione> findByDniTitularContaining(String dniTitular, Pageable pageable);
 	List<Infraccione> findByNombreContaining(String nombre, Sort sort);
 	List<Infraccione> findByDniContaining(String dni, Sort sort);
 	List<Infraccione> findByActaContaining(String acta, Sort sort);

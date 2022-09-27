@@ -99,6 +99,12 @@ public class InfracionesController {
 	    	  case "causa":
 	    		  pageTuts = infracionesRepository.findByCausaContaining(title, pagingSort);//findByDniContaining(title, pagingSort);
 	    		  break;
+				  case "nombreTitular":
+					  pageTuts = infracionesRepository.findByNombreTitularContaining(title, pagingSort);//findByDniContaining(title, pagingSort);
+					  break;
+				  case "dniTitular":
+					  pageTuts = infracionesRepository.findByDniTitularContaining(title, pagingSort);//findByDniContaining(title, pagingSort);
+					  break;
 	    	  default:
 	    		  pageTuts = infracionesRepository.findByDniContaining(title, pagingSort);
 	    	    break;
