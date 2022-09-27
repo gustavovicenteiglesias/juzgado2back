@@ -27,7 +27,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="130" y="10" width="431" height="21" uuid="df8741b6-0f22-4089-8487-78849319ca67"/>

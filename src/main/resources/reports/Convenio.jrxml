@@ -120,7 +120,7 @@ AND N.id=$P{ID_CONVENIO}]]>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<imageExpression><![CDATA["http://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
+				<imageExpression><![CDATA["https://juzgado2.areco.gob.ar/logo100x100.png"]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="130" y="29" width="430" height="73" uuid="c0f07aea-2f5e-4207-8b28-c79b4dda4dca"/>
