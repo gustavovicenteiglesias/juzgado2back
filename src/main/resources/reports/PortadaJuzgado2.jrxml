@@ -49,7 +49,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="22" isBold="true"/>
 				</textElement>
-				<text><![CDATA[JUZGADO DE FALTAS MUNICIPAL N°2 DE SAN ANTONIO DE ARECO ]]></text>
+				<text><![CDATA[JUZGADO DE FALTAS MUNICIPAL DE SAN ANTONIO DE ARECO ]]></text>
 			</staticText>
 		</band>
 	</pageHeader>

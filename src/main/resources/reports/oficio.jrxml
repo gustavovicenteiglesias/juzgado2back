@@ -115,7 +115,7 @@
 				<textElement textAlignment="Left">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[Tengo el agrado de dirigirme a Ud.(s) en el marco de la causa N°               s/ infracción a la Ley N° 24.449/13.927, de trámite por ante este Juzgado de Faltas N° 2 de San Antonio de Areco, a efectos de solicitarle(s) la entrega del vehículo oportunamente retenido y que a continuación se detalla, a su titular registral/ autorizado. -]]></text>
+				<text><![CDATA[Tengo el agrado de dirigirme a Ud.(s) en el marco de la causa N°               s/ infracción a la Ley N° 24.449/13.927, de trámite por ante este Juzgado de Faltas  de San Antonio de Areco, a efectos de solicitarle(s) la entrega del vehículo oportunamente retenido y que a continuación se detalla, a su titular registral/ autorizado. -]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="150" width="100" height="20" uuid="424c83df-5af1-48b9-a558-7d4af1ce93f3"/>

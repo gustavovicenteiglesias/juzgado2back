@@ -41,7 +41,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
-				<text><![CDATA[JUZGADO DE FALTAS Nº 2]]></text>
+				<text><![CDATA[JUZGADO DE FALTAS ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="130" y="52" width="431" height="21" uuid="ffe54d32-093f-4025-a6b4-f9eee7db1ff6"/>
@@ -232,7 +232,7 @@
 					<font fontName="Arial" isItalic="false" isStrikeThrough="false"/>
 					<paragraph lineSpacing="1_1_2" lineSpacingSize="1.0" leftIndent="10" rightIndent="10"/>
 				</textElement>
-				<text><![CDATA[Por medio de la presente, se notifica a Ud. por disposición del Dr. José Julio Cagnoni, titular del Juzgado de Faltas nº 2 de San Antonio de Areco, que atento el Acta Única de Infracción que origina los presentes actuados, y conforme lo establece el art. 35 inc. g) de la ley 13.927, se le notifica la infracción constatada. A tal efecto, se acompaña copia del acta labrada que da origen a éstas actuaciones y asimismo se le hace saber que podrá optar: a) Por el beneficio del pago voluntario correspondiente al cincuenta por ciento (50%) del valor de la multa prevista para esta infracción (art. 85 inc. a) de la Ley 24.449 modif. por Ley 26.363, la que tendrá los efectos de sanción firme; disponiendo para ello de un plazo de treinta (30) días contados a partir de notificada la presente;b) Para el caso de no acogerse a este beneficio y vencido dicho plazo, no existiendo constancia de su acogimiento, pago y allanamiento, queda emplazado a comparecer al asiento de este Juzgado de Faltas Nº 2 de San Antonio de Areco, sito en calle Matheu Nº 362 de este medio, dentro de los quince (15) días contados a partir del día siguiente del vencimiento del plazo para el pago voluntario, a efectos de ejercer su derecho de defensa, ofrecer y producir en el mismo acto la prueba de que intente valerse, bajo apercibimiento de presumirse su responsabilidad y ser declarado rebelde, en cuyo caso se dictará resolución que será anotada en el R.U.I.T. (Registro Único de Infractores de Tránsito). Podrá ser asistido por un letrado, rigiendo el principio de formalismo moderado (art. 46 Dec. Ley 8751/77 y sus modif. y art. 35 inc. d) ap. 1) de la Ley Provincial Nº 13927).Para el caso de resultar ser menor de edad y teniendo en cuenta que la responsabilidad civil reposa sobre sus progenitores éstos deberán acompañarlo.Notifíquese.-----------------------------]]></text>
+				<text><![CDATA[Por medio de la presente, se notifica a Ud. Que se encuentra en trámite la causa de referencia, originada conforme en el acta única de infracción que obra en estos autos, y conforme lo establece el art. 35 inc. g) de la ley 13.927, se le notifica la infracción constatada. A tal efecto, se acompaña copia del acta labrada que da origen a éstas actuaciones y asimismo se le hace saber que podrá optar: a) Por el beneficio del pago voluntario correspondiente al cincuenta por ciento (50%) del valor de la multa prevista para esta infracción (art. 85 inc. a) de la Ley 24.449 modif. por Ley 26.363, la que tendrá los efectos de sanción firme; disponiendo para ello de un plazo de treinta (30) días contados a partir de notificada la presente;b) Para el caso de no acogerse a este beneficio y vencido dicho plazo, no existiendo constancia de su acogimiento, pago y allanamiento, queda emplazado a comparecer al asiento de este Juzgado de Faltas  de San Antonio de Areco, sito en calle Matheu Nº 362 de este medio, dentro de los quince (15) días contados a partir del día siguiente del vencimiento del plazo para el pago voluntario, a efectos de ejercer su derecho de defensa, ofrecer y producir en el mismo acto la prueba de que intente valerse, bajo apercibimiento de presumirse su responsabilidad y ser declarado rebelde, en cuyo caso se dictará resolución que será anotada en el R.U.I.T. (Registro Único de Infractores de Tránsito). Podrá ser asistido por un letrado, rigiendo el principio de formalismo moderado (art. 46 Dec. Ley 8751/77 y sus modif. y art. 35 inc. d) ap. 1) de la Ley Provincial Nº 13927).Para el caso de resultar ser menor de edad y teniendo en cuenta que la responsabilidad civil reposa sobre sus progenitores éstos deberán acompañarlo.Notifíquese.-----------------------------]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="340" width="430" height="30" uuid="7c8a76b1-9d4c-4aa1-a0c7-46617621c334">
@@ -252,7 +252,7 @@
 					<font fontName="Arial" size="8"/>
 					<paragraph leftIndent="10"/>
 				</textElement>
-				<text><![CDATA[HORARIOS DE ATENCIÓN LUNES A VIERNES DE 7,30 A 12,30 HS.]]></text>
+				<text><![CDATA[HORARIOS DE ATENCIÓN LUNES A VIERNES DE 8,15 A 12,30 HS.]]></text>
 			</staticText>
 		</band>
 	</detail>
