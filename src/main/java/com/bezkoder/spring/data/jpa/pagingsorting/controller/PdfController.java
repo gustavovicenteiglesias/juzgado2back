@@ -7,7 +7,10 @@ import java.io.OutputStream;
 
 import java.sql.SQLException;
 
+import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -166,8 +169,11 @@ public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") L
 @GetMapping(value = "/api/recibo/{id}")
 
 public void getDocumentrecibo(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
-
+	Locale arg = new Locale("es", "AR");
+	Currency pesos = Currency.getInstance(arg);
+	NumberFormat pesoFormat = NumberFormat.getCurrencyInstance(arg);
 	Infraccione infraccion= infracionesRepository.findById(id).get();
+	double valores= Float.parseFloat(infraccion.getValor());
 	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
 	Map <String,Object> para = new HashMap<>();
 	para.put("causa", infraccion.getCausa());
@@ -181,7 +187,7 @@ public void getDocumentrecibo(HttpServletResponse response,@PathVariable("id") L
 	para.put("direccion", infraccion.getDireccion());
 	para.put("localidad", infraccion.getLocalidad());
 	para.put("provincia", infraccion.getProvincia());
-	para.put("valor", infraccion.getValor());
+	para.put("valor", pesoFormat.format(valores));
 	
 	
 	JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
@@ -197,7 +203,9 @@ public void getDocumentrecibo(HttpServletResponse response,@PathVariable("id") L
 @GetMapping(value = "/api/recibocuotas/{id}")
 
 public void getDocumentreciboCuotas(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
-
+	Locale arg = new Locale("es", "AR");
+	Currency pesos = Currency.getInstance(arg);
+	NumberFormat pesoFormat = NumberFormat.getCurrencyInstance(arg);
 	Infraccione infraccion= infracionesRepository.findById(id).get();
 	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
 	Map <String,Object> para = new HashMap<>();
@@ -212,7 +220,7 @@ public void getDocumentreciboCuotas(HttpServletResponse response,@PathVariable("
 	para.put("direccion", infraccion.getDireccion());
 	para.put("localidad", infraccion.getLocalidad());
 	para.put("provincia", infraccion.getProvincia());
-	para.put("valor", infraccion.getConvenio().getValor_cuota().toString());
+	para.put("valor", pesoFormat.format(infraccion.getConvenio().getValor_cuota()));
 	
 	
 	
@@ -230,7 +238,9 @@ public void getDocumentreciboCuotas(HttpServletResponse response,@PathVariable("
 @GetMapping(value = "/api/reciboanticipo/{id}")
 
 public void getDocumentreciboAnticipo(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
-
+	Locale arg = new Locale("es", "AR");
+	Currency pesos = Currency.getInstance(arg);
+	NumberFormat pesoFormat = NumberFormat.getCurrencyInstance(arg);
 	Infraccione infraccion= infracionesRepository.findById(id).get();
 	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
 	Map <String,Object> para = new HashMap<>();
@@ -245,7 +255,7 @@ public void getDocumentreciboAnticipo(HttpServletResponse response,@PathVariable
 	para.put("direccion", infraccion.getDireccion());
 	para.put("localidad", infraccion.getLocalidad());
 	para.put("provincia", infraccion.getProvincia());
-	para.put("valor", infraccion.getConvenio().getAnticipo().toString());
+	para.put("valor",pesoFormat.format(infraccion.getConvenio().getAnticipo()));
 	
 	
 	
