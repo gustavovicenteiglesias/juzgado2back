@@ -62,7 +62,7 @@ public class PdfController {
 		para.put("acta", infraccion.getActa());
 		para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
 		para.put("articulo", infraccion.getArticulo());
-		para.put("anio","2022");
+		para.put("anio","2023");
 		para.put("descripcion",infraccion.getDescripcion());
 		para.put("acto_resolutorio",infraccion.getActoResolutorio());
 		para.put("fecha", infraccion.getFecha());

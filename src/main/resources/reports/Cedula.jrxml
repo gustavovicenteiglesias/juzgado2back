@@ -252,7 +252,7 @@
 					<font fontName="Arial" size="8"/>
 					<paragraph leftIndent="10"/>
 				</textElement>
-				<text><![CDATA[HORARIOS DE ATENCIÓN LUNES A VIERNES DE 8,15 A 12,30 HS.]]></text>
+				<text><![CDATA[HORARIOS DE ATENCIÓN LUNES A VIERNES DE 7,30 A 12,00 HS.]]></text>
 			</staticText>
 		</band>
 	</detail>
