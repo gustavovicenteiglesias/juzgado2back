@@ -15,7 +15,13 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="convenio")
 public class Convenio implements Serializable {
@@ -45,90 +51,5 @@ public class Convenio implements Serializable {
 	@JsonManagedReference(value="convenio-cuotas")
 	private List<PagosCuotas> cuotas;
 
-	
-
-	public Convenio(Long id, Float anticipo, Integer cant_cuotas, Float valor_cuota, Long nro_recibo, Boolean estado,
-			Infraccione infracciones, List<PagosCuotas> cuotas) {
-		super();
-		this.id = id;
-		this.anticipo = anticipo;
-		this.cant_cuotas = cant_cuotas;
-		this.valor_cuota = valor_cuota;
-		this.nro_recibo = nro_recibo;
-		this.estado = estado;
-		this.infracciones = infracciones;
-		this.cuotas = cuotas;
-	}
-
-	public Convenio() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Float getAnticipo() {
-		return anticipo;
-	}
-
-	public void setAnticipo(Float anticipo) {
-		this.anticipo = anticipo;
-	}
-
-	public Integer getCant_cuotas() {
-		return cant_cuotas;
-	}
-
-	public void setCant_cuotas(Integer cant_cuotas) {
-		this.cant_cuotas = cant_cuotas;
-	}
-
-	public Float getValor_cuota() {
-		return valor_cuota;
-	}
-
-	public void setValor_cuota(Float valor_cuota) {
-		this.valor_cuota = valor_cuota;
-	}
-
-	public Infraccione getInfracciones() {
-		return infracciones;
-	}
-
-	public void setInfracciones(Infraccione infracciones) {
-		this.infracciones = infracciones;
-	}
-
-	public List<PagosCuotas> getCuotas() {
-		return cuotas;
-	}
-
-	public void setCuotas(List<PagosCuotas> cuotas) {
-		this.cuotas = cuotas;
-	}
-
-	public Long getNro_recibo() {
-		return nro_recibo;
-	}
-
-	public void setNro_recibo(Long nro_recibo) {
-		this.nro_recibo = nro_recibo;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-	
-	
-	
 
 }

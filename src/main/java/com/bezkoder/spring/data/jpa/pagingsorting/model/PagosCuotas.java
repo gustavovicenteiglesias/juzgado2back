@@ -15,6 +15,13 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+
+@Getter
+@Setter
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="pagos_cuotas")
 public class PagosCuotas implements Serializable{
@@ -33,58 +40,4 @@ public class PagosCuotas implements Serializable{
 	 @JsonBackReference(value="convenio-cuotas")
 	 private Convenio convenio;
 
-	public PagosCuotas(Long id, Date fecha_pago, Long nro_recibo, Boolean estado, Convenio convenio) {
-		super();
-		this.id = id;
-		this.fecha_pago = fecha_pago;
-		this.nro_recibo = nro_recibo;
-		this.estado = estado;
-		this.convenio = convenio;
-	}
-
-	public PagosCuotas() {
-		super();
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Date getFecha_pago() {
-		return fecha_pago;
-	}
-
-	public void setFecha_pago(Date fecha_pago) {
-		this.fecha_pago = fecha_pago;
-	}
-
-	public Long getNro_recibo() {
-		return nro_recibo;
-	}
-
-	public void setNro_recibo(Long nro_recibo) {
-		this.nro_recibo = nro_recibo;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-	public Convenio getConvenio() {
-		return convenio;
-	}
-
-	public void setConvenio(Convenio convenio) {
-		this.convenio = convenio;
-	}
-	 
-	
 }
