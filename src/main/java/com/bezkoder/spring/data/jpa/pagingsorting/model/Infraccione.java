@@ -3,17 +3,13 @@ package com.bezkoder.spring.data.jpa.pagingsorting.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-
-/**
- * The persistent class for the infracciones database table.
- * 
- */
 @Getter
 @Setter
 @ToString
@@ -23,88 +19,102 @@ import java.util.Date;
 @Table(name="infracciones")
 @NamedQuery(name="Infraccione.findAll", query="SELECT i FROM Infraccione i")
 public class Infraccione implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	private String causa;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String acta;
+    private String causa;
 
-	@Column(name="acto_resolutorio")
-	private String actoResolutorio;
+    private String acta;
 
-	private String agente;
+    @Column(name="acto_resolutorio")
+    private String actoResolutorio;
 
-	private String articulo;
+    private String agente;
 
-	private String chasis;
+    private String articulo;
 
-	@Column(name="codigo_postal")
-	private String codigoPostal;
+    private String chasis;
 
-	private String descripcion;
+    @Column(name="codigo_postal")
+    private String codigoPostal;
 
-	private String direccion;
+    private String descripcion;
 
-	private String dni;
+    private String direccion;
 
-	private String dominio;
+    private String dni;
 
-	@Temporal(TemporalType.DATE)
-	private Date fecha;
+    private String dominio;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name="fecha_resolucion")
-	private Date fechaResolucion;
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
 
-	private String inciso;
+    @Temporal(TemporalType.DATE)
+    @Column(name="fecha_resolucion")
+    private Date fechaResolucion;
 
-	@Column(name="ley_ordenanza")
-	private String leyOrdenanza;
+    private String inciso;
 
-	private String localidad;
+    @Column(name="ley_ordenanza")
+    private String leyOrdenanza;
 
-	private String lugar;
+    private String localidad;
 
-	private String motor;
+    private String lugar;
 
-	private String nombre;
+    private String motor;
 
-	private String provincia;
+    private String nombre;
 
-	@Column(name="unidad_valor")
-	private Float unidadValor;
+    private String provincia;
 
-	private String valor;
+    @Column(name="unidad_valor")
+    private Float unidadValor;
 
-	private String vehiculo;
-	
-	private String comentario;
-	
-	private String intervino ;
-	
-	@Column(name="titular_codigo_postal	")
-	private String cpTitular;
-	
-	@Column(name="titular_nombre")
-	private String nombreTitular;
-	
-	@Column(name="titular_direccion")
-	private String direccionTitular;
-	
-	@Column(name="titular_localidad")
-	private String localidadTitular;
-	
-	@Column(name="titular_provincia")
-	private String provinciaTitular;
-	
-	@Column(name="titular_dni")
-	private String dniTitular;
-	
-	@OneToOne(mappedBy = "infracciones", cascade = CascadeType.ALL)
-	@JsonManagedReference(value="infracciones-convenio")
-	private Convenio convenio ;
+    private String valor;
+
+    private String vehiculo;
+
+    private String comentario;
+
+    private String intervino ;
+
+    @Column(name="titular_codigo_postal	")
+    private String cpTitular;
+
+    @Column(name="titular_nombre")
+    private String nombreTitular;
+
+    @Column(name="titular_direccion")
+    private String direccionTitular;
+
+    @Column(name="titular_localidad")
+    private String localidadTitular;
+
+    @Column(name="titular_provincia")
+    private String provinciaTitular;
+
+    @Column(name="titular_dni")
+    private String dniTitular;
+
+    // 👉 NUEVO: observaciones específicas para el oficio/entrega
+    @Column(name = "observaciones_entrega", length = 500)
+    private String observacionesEntrega;
+
+    // 👉 NUEVO: relación muchos-a-muchos con Entrega
+    @ManyToMany
+    @JoinTable(
+            name = "infracciones_entregas",
+            joinColumns = @JoinColumn(name = "infraccion_id"),
+            inverseJoinColumns = @JoinColumn(name = "entrega_id")
+    )
+    @ToString.Exclude
+    private Set<Entrega> entregas = new HashSet<>();
+
+    @OneToOne(mappedBy = "infracciones", cascade = CascadeType.ALL)
+    @JsonManagedReference(value="infracciones-convenio")
+    private Convenio convenio ;
 }

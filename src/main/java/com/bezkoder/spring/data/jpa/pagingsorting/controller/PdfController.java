@@ -8,14 +8,13 @@ import java.io.OutputStream;
 import java.sql.SQLException;
 
 import java.text.NumberFormat;
-import java.util.Currency;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.time.Year;
+import java.util.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.bezkoder.spring.data.jpa.pagingsorting.model.Entrega;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +33,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -49,40 +50,46 @@ public class PdfController {
 	 
 	 @Autowired
 		InfracionesRepository infracionesRepository;
-	
-	@GetMapping(value = "/api/portada/{id}")
-	
-	public void getDocument(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
-	
-		Infraccione infraccion= infracionesRepository.findById(id).get();
-		InputStream jasperStream = this.getClass().getResourceAsStream("/reports/PortadaJuzgado2.jrxml");
-		Map <String,Object> para = new HashMap<>();
-		para.put("causa", infraccion.getCausa());
-		para.put("nombre", infraccion.getNombre());
-		para.put("acta", infraccion.getActa());
-		para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
-		para.put("articulo", infraccion.getArticulo());
-		para.put("anio","2023");
-		para.put("descripcion",infraccion.getDescripcion());
-		para.put("acto_resolutorio",infraccion.getActoResolutorio());
-		para.put("fecha", infraccion.getFecha());
-		
-		JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para,new JREmptyDataSource());
-		
-		response.setContentType("application/pdf");
-		response.addHeader("Content-Disposition", "inline; filename=abono"+id+".pdf;");
-		
-		final OutputStream outStream = response.getOutputStream();
-	    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-	}
+
+    @GetMapping(value = "/api/portada/{id}")
+    public void getDocument(HttpServletResponse response, @PathVariable("id") Long id)
+            throws IOException, JRException, SQLException {
+
+        Infraccione infraccion = infracionesRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Infracción no encontrada: " + id));
+        InputStream jasperStream = this.getClass().getResourceAsStream("/reports/PortadaJuzgado2.jrxml");
+
+        Map<String, Object> para = new HashMap<>();
+        para.put("causa", infraccion.getCausa());
+        para.put("nombre", infraccion.getNombre());
+        para.put("acta", infraccion.getActa());
+        para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+        para.put("articulo", infraccion.getArticulo());
+
+        // ✅ año actual
+        para.put("anio", String.valueOf(Year.now().getValue())); // o Year.now().getValue() si en JRXML es Integer
+
+        para.put("descripcion", infraccion.getDescripcion());
+        para.put("acto_resolutorio", infraccion.getActoResolutorio());
+        para.put("fecha", infraccion.getFecha());
+
+        JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para, new JREmptyDataSource());
+
+        response.setContentType("application/pdf");
+        response.addHeader("Content-Disposition", "inline; filename=abono" + id + ".pdf;");
+
+        try (OutputStream outStream = response.getOutputStream()) {
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+        }
+    }
 	 
 @GetMapping(value = "/api/cedula/{id}")
 	
 	public void getDocumentcedula(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
 	
 		Infraccione infraccion= infracionesRepository.findById(id).get();
-		InputStream jasperStream = this.getClass().getResourceAsStream("/reports/Cedula.jrxml");
+		InputStream jasperStream = this.getClass().getResourceAsStream("/reports/Cedula2026.jrxml");
 		Map <String,Object> para = new HashMap<>();
 		para.put("causa", infraccion.getCausa());
 		para.put("nombre", infraccion.getNombre());
@@ -112,7 +119,7 @@ public class PdfController {
 public void getDocumentcedulaTitular(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
 
 	Infraccione infraccion= infracionesRepository.findById(id).get();
-	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/Cedula.jrxml");
+	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/Cedula2026.jrxml");
 	Map <String,Object> para = new HashMap<>();
 	para.put("causa", infraccion.getCausa());
 	para.put("nombre", infraccion.getNombreTitular());
@@ -137,8 +144,91 @@ public void getDocumentcedulaTitular(HttpServletResponse response,@PathVariable(
 }
 
 @GetMapping(value = "/api/oficio/{id}")
+public void getDocumentOficio(HttpServletResponse response, @PathVariable("id") Long id)
+        throws IOException, JRException {
 
-public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
+    Infraccione infraccion = infracionesRepository.findWithEntregasById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Infracción no encontrada: " + id));
+    System.out.println("▶ Infracción ID: " + infraccion.getId());
+
+    if (infraccion.getEntregas() == null) {
+        System.out.println("❌ entregas = null");
+    } else if (infraccion.getEntregas().isEmpty()) {
+        System.out.println("⚠️ entregas VACÍAS");
+    } else {
+        System.out.println("✔ entregas encontradas:");
+        infraccion.getEntregas().forEach(e ->
+                System.out.println("   - Entrega ID=" + e.getId() + " | nombre='" + e.getNombre() + "'")
+        );
+    }
+
+    // ✅ checks (boolean nunca-null)
+    boolean colocarDominio   = hasEntrega(infraccion, "DOMINIO");
+    boolean colocarEscape    = hasEntrega(infraccion, "ESCAPE");
+    boolean colocarSeguridad = hasEntrega(infraccion, "SEGURIDAD");
+    boolean porAcarreo       = hasEntrega(infraccion, "ACARREO");
+
+    System.out.println("▶ Checks calculados:");
+    System.out.println("   pColocarDominio   = " + colocarDominio);
+    System.out.println("   pColocarEscape    = " + colocarEscape);
+    System.out.println("   pColocarSeguridad = " + colocarSeguridad);
+    System.out.println("   pPorAcarreo       = " + porAcarreo);
+
+
+    InputStream jasperStream = this.getClass().getResourceAsStream("/reports/oficionuevo.jrxml");
+    if (jasperStream == null) {
+        throw new IllegalStateException("No se encontró /reports/oficio.jrxml en classpath");
+    }
+
+    Map<String, Object> para = new HashMap<>();
+    para.put("causa", infraccion.getCausa());
+    para.put("nombre", infraccion.getNombreTitular());
+    para.put("acta", infraccion.getActa());
+    para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+    para.put("dominio", infraccion.getDominio());
+    para.put("dni", infraccion.getDniTitular());
+    para.put("vehiculo", infraccion.getVehiculo());
+    para.put("motor", infraccion.getMotor());
+    para.put("chasis", infraccion.getChasis());
+    para.put("agente", infraccion.getAgente());
+
+    // ✅ NUEVOS parámetros del JRXML
+    para.put("pColocarDominio", colocarDominio);
+    para.put("pColocarEscape", colocarEscape);
+    para.put("pColocarSeguridad", colocarSeguridad);
+    para.put("pPorAcarreo", porAcarreo);
+
+    // ✅ Observaciones específicas de entrega (tu nuevo campo)
+    para.put("pObservaciones", safeString(infraccion.getObservacionesEntrega()));
+
+    JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para, new JREmptyDataSource());
+
+    response.setContentType("application/pdf");
+    response.addHeader("Content-Disposition", "inline; filename=oficio_" + id + ".pdf;");
+
+    try (OutputStream outStream = response.getOutputStream()) {
+        JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+    }
+}
+    private boolean hasEntrega(Infraccione infraccion, String keyword) {
+        if (infraccion.getEntregas() == null || infraccion.getEntregas().isEmpty()) return false;
+
+        String k = keyword.trim().toUpperCase(Locale.ROOT);
+
+        return infraccion.getEntregas().stream()
+                .filter(Objects::nonNull)
+                .map(Entrega::getNombre)
+                .filter(Objects::nonNull)
+                .map(s -> s.trim().toUpperCase(Locale.ROOT))
+                .anyMatch(nombre -> nombre.contains(k));
+    }
+
+    private String safeString(String s) {
+        return (s == null) ? "" : s;
+    }
+
+/*public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") Long id) throws IOException, JRException, SQLException {
 
 	Infraccione infraccion= infracionesRepository.findById(id).get();
 	InputStream jasperStream = this.getClass().getResourceAsStream("/reports/oficio.jrxml");
@@ -164,7 +254,7 @@ public void getDocumentOficio(HttpServletResponse response,@PathVariable("id") L
 	
 	final OutputStream outStream = response.getOutputStream();
     JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
-}
+}*/
 
 @GetMapping(value = "/api/recibo/{id}")
 

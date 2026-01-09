@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import com.bezkoder.spring.data.jpa.pagingsorting.repository.EntregaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,8 +40,9 @@ import com.bezkoder.spring.data.jpa.pagingsorting.security.service.UserDetailsIm
 public class InfracionesController {
 	@Autowired
 	InfracionesRepository infracionesRepository;
-	
-	
+
+    @Autowired
+    EntregaRepository entregaRepository;
 	
 	private Sort.Direction getSortDirection(String direction) {
 	    if (direction.equals("asc")) {
@@ -51,8 +53,34 @@ public class InfracionesController {
 
 	    return Sort.Direction.ASC;
 	  }
-	
-	
+
+    @PutMapping("/infraciones/{id}/entrega")
+    public ResponseEntity<Infraccione> updateEntregaOficio(
+            @PathVariable("id") Long id,
+            @RequestBody com.bezkoder.spring.data.jpa.pagingsorting.payload.EntregaUpdateRequest body
+    ) {
+        Optional<Infraccione> infraccionOpt = infracionesRepository.findById(id);
+        if (!infraccionOpt.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        Infraccione infraccion = infraccionOpt.get();
+
+        // 1) Observaciones
+        infraccion.setObservacionesEntrega(body.getObservacionesEntrega());
+
+        // 2) Entregas (tabla intermedia)
+        infraccion.getEntregas().clear();
+
+        if (body.getEntregaIds() != null && !body.getEntregaIds().isEmpty()) {
+            List<com.bezkoder.spring.data.jpa.pagingsorting.model.Entrega> entregas =
+                    entregaRepository.findAllById(body.getEntregaIds());
+            infraccion.getEntregas().addAll(entregas);
+        }
+
+        Infraccione saved = infracionesRepository.save(infraccion);
+        return new ResponseEntity<>(saved, HttpStatus.OK);
+    }
 	  @GetMapping("/infraciones")
 	  public ResponseEntity<Map<String, Object>> getAllTutorialsPage(
 	      @RequestParam(required = false) String title,
@@ -115,7 +143,7 @@ public class InfracionesController {
 	      infracciones  = pageTuts.getContent();
 
 	      Map<String, Object> response = new HashMap<>();
-	      response.put("tutorials", infracciones );
+	      response.put("infracciones", infracciones );
 	      response.put("currentPage", pageTuts.getNumber());
 	      response.put("totalItems", pageTuts.getTotalElements());
 	      response.put("totalPages", pageTuts.getTotalPages());
@@ -230,7 +258,7 @@ public class InfracionesController {
 	      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
 	  }
-	  @DeleteMapping("/infraciones/{id}")
+	 /* @DeleteMapping("/infraciones/{id}")
 	  public ResponseEntity<HttpStatus> deleteTutorial(@PathVariable("id") Long id) {
 	    try {
 	    	infracionesRepository.deleteById(id);
@@ -238,5 +266,29 @@ public class InfracionesController {
 	    } catch (Exception e) {
 	      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	    }
-	  }
+	  }*/
+     @DeleteMapping("/infraciones/{id}")
+     public ResponseEntity<HttpStatus> deleteInfraccion(@PathVariable("id") Long id) {
+         try {
+             Optional<Infraccione> opt = infracionesRepository.findWithEntregasById(id);
+
+             if (!opt.isPresent()) {
+                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+             }
+
+             Infraccione infr = opt.get();
+
+             // Limpia tabla intermedia infracciones_entregas
+             infr.getEntregas().clear();
+             infracionesRepository.save(infr);
+
+             // Borra la infracción
+             infracionesRepository.deleteById(id);
+
+             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+         } catch (Exception e) {
+             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+     }
+
 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -29,4 +30,8 @@ public interface InfracionesRepository extends JpaRepository<Infraccione,Long> {
 	
 	@Query(value = "SELECT * FROM infracciones ORDER BY id DESC LIMIT 1", nativeQuery = true)
 	Optional<Infraccione> findByLastCausa();
+    @EntityGraph(attributePaths = {"entregas"})
+    Optional<Infraccione> findWithEntregasById(Long id);
+
+
 }
