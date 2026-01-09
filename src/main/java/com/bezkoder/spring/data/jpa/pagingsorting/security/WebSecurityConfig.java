@@ -66,7 +66,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 "http://localhost:5173",
                 "http://localhost:3000",
                 "https://juzgado2.areco.gob.ar",
-                "https://apijuzgado2.areco.ar"
+                "https://apijuzgado2.areco.ar",
+                "https://test.juzgado2.areco.gob.ar",
+                "https://www.test.juzgado2.areco.gob.ar"
+
         ));
         configuration.setAllowedMethods(Arrays.asList(
                 "GET", "POST", "PUT", "DELETE", "OPTIONS"
