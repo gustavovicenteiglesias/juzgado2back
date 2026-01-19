@@ -344,11 +344,11 @@ COLOCAR:]]></text>
 				<text><![CDATA[ESCAPE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="70" y="378" width="130" height="19" uuid="95461b34-0517-44bf-9eab-3527d751c263"/>
+				<reportElement x="70" y="378" width="320" height="19" uuid="95461b34-0517-44bf-9eab-3527d751c263"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="12"/>
 				</textElement>
-				<text><![CDATA[SEGURIDAD]]></text>
+				<text><![CDATA[ELEMENTOS DE SEGURIDAD]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="70" y="397" width="130" height="19" uuid="f14ae2ec-296b-4a26-97c5-0431281cdcd3"/>

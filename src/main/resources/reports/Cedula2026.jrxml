@@ -246,7 +246,7 @@ Para el caso que el infractor resulte ser menor de edad y teniendo en cuenta que
 					<font fontName="Arial" isBold="true"/>
 					<paragraph leftIndent="10"/>
 				</textElement>
-				<text><![CDATA[Notifíquese.]]></text>
+				<text><![CDATA[QUEDA UD. DEBIDAMENTE NOTIFICADO E INTIMADO.-]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="370" width="430" height="30" uuid="3471393d-9180-487f-9c82-120d3ec4a152">
