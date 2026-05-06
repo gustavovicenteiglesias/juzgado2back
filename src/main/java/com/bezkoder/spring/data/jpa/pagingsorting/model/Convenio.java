@@ -47,7 +47,7 @@ public class Convenio implements Serializable {
 	@JsonBackReference(value="infracciones-convenio")
 	private Infraccione infracciones;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "convenio")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "convenio", orphanRemoval = true)
 	@JsonManagedReference(value="convenio-cuotas")
 	private List<PagosCuotas> cuotas;
 

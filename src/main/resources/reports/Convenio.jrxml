@@ -409,6 +409,7 @@ AND N.id=$P{ID_CONVENIO}]]>
 							<textField isBlankWhenNull="true">
 								<reportElement x="0" y="0" width="107" height="30" uuid="ce88d0fe-a42a-4a12-bca5-5aa716922ffe"/>
 								<textElement textAlignment="Center"/>
+								<textFieldExpression><![CDATA[Boolean.TRUE.equals($F{estado}) ? "PAGADO" : "PENDIENTE"]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

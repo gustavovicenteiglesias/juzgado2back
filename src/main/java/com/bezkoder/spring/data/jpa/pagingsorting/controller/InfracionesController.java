@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import com.bezkoder.spring.data.jpa.pagingsorting.model.Convenio;
+import com.bezkoder.spring.data.jpa.pagingsorting.model.PagosCuotas;
 import com.bezkoder.spring.data.jpa.pagingsorting.repository.EntregaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -165,6 +169,67 @@ public class InfracionesController {
 	      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	    }
 	  }
+
+     @Transactional
+     @PostMapping("/infraciones/{id}/convenio")
+     public ResponseEntity<Infraccione> createConvenio(
+             @PathVariable("id") Long id,
+             @RequestBody Infraccione body
+     ) {
+         Optional<Infraccione> infraccionOpt = infracionesRepository.findById(id);
+
+         if (!infraccionOpt.isPresent()) {
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         }
+
+         Infraccione infraccion = infraccionOpt.get();
+
+         if (infraccion.getConvenio() != null) {
+             return new ResponseEntity<>(HttpStatus.CONFLICT);
+         }
+
+         Convenio convenio = body.getConvenio();
+         if (convenio == null || convenio.getCant_cuotas() == null || convenio.getCant_cuotas() <= 0) {
+             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+         }
+
+         infraccion.setValor(body.getValor());
+
+         convenio.setId(null);
+         convenio.setInfracciones(infraccion);
+
+         if (convenio.getCuotas() != null) {
+             for (PagosCuotas cuota : convenio.getCuotas()) {
+                 cuota.setId(null);
+                 cuota.setConvenio(convenio);
+             }
+         }
+
+         infraccion.setConvenio(convenio);
+
+         return new ResponseEntity<>(infracionesRepository.save(infraccion), HttpStatus.CREATED);
+     }
+
+     @Transactional
+     @DeleteMapping("/infraciones/{id}/convenio")
+     public ResponseEntity<HttpStatus> deleteConvenio(@PathVariable("id") Long id) {
+         Optional<Infraccione> infraccionOpt = infracionesRepository.findById(id);
+
+         if (!infraccionOpt.isPresent()) {
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         }
+
+         Infraccione infraccion = infraccionOpt.get();
+
+         if (infraccion.getConvenio() == null) {
+             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+         }
+
+         infraccion.setConvenio(null);
+         infracionesRepository.save(infraccion);
+
+         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+     }
 	  
 	 @PutMapping("/infraciones/{id}")
 	  public ResponseEntity<Infraccione> updateTutorial(@PathVariable("id") Long id, @RequestBody Infraccione tutorial) {

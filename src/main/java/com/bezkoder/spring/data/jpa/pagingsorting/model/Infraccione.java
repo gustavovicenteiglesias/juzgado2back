@@ -114,7 +114,7 @@ public class Infraccione implements Serializable {
     @ToString.Exclude
     private Set<Entrega> entregas = new HashSet<>();
 
-    @OneToOne(mappedBy = "infracciones", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "infracciones", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference(value="infracciones-convenio")
     private Convenio convenio ;
 }

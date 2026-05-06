@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.bezkoder.spring.data.jpa.pagingsorting.model.Entrega;
+import com.bezkoder.spring.data.jpa.pagingsorting.model.PagosCuotas;
+import com.bezkoder.spring.data.jpa.pagingsorting.repository.PagosCuotasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,6 +52,9 @@ public class PdfController {
 	 
 	 @Autowired
 		InfracionesRepository infracionesRepository;
+
+    @Autowired
+    PagosCuotasRepository pagosCuotasRepository;
 
     @GetMapping(value = "/api/portada/{id}")
     public void getDocument(HttpServletResponse response, @PathVariable("id") Long id)
@@ -322,6 +327,52 @@ public void getDocumentreciboCuotas(HttpServletResponse response,@PathVariable("
 	response.addHeader("Content-Disposition", "inline; filename=cedulatitular"+id+".pdf;");
 	
 	final OutputStream outStream = response.getOutputStream();
+    JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
+}
+
+@GetMapping(value = "/api/recibocuotas/{id}/{cuotaId}")
+public void getDocumentreciboCuota(
+        HttpServletResponse response,
+        @PathVariable("id") Long id,
+        @PathVariable("cuotaId") Long cuotaId
+) throws IOException, JRException, SQLException {
+    Locale arg = new Locale("es", "AR");
+    NumberFormat pesoFormat = NumberFormat.getCurrencyInstance(arg);
+
+    Infraccione infraccion = infracionesRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Infraccion no encontrada: " + id));
+
+    PagosCuotas cuota = pagosCuotasRepository.findById(cuotaId)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cuota no encontrada: " + cuotaId));
+
+    if (cuota.getConvenio() == null
+            || cuota.getConvenio().getInfracciones() == null
+            || !id.equals(cuota.getConvenio().getInfracciones().getId())) {
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "La cuota no pertenece a la infraccion indicada");
+    }
+
+    InputStream jasperStream = this.getClass().getResourceAsStream("/reports/recibo.jrxml");
+    Map<String, Object> para = new HashMap<>();
+    para.put("causa", infraccion.getCausa());
+    para.put("nombre", infraccion.getNombre());
+    para.put("acta", infraccion.getActa());
+    para.put("ley_ordenanza", infraccion.getLeyOrdenanza());
+    para.put("articulo", infraccion.getArticulo());
+    para.put("inciso", infraccion.getInciso());
+    para.put("dni", infraccion.getDni());
+    para.put("fecha", new java.sql.Date(cuota.getFecha_pago().getTime()));
+    para.put("direccion", infraccion.getDireccion());
+    para.put("localidad", infraccion.getLocalidad());
+    para.put("provincia", infraccion.getProvincia());
+    para.put("valor", pesoFormat.format(infraccion.getConvenio().getValor_cuota()));
+
+    JasperReport jasperReport = JasperCompileManager.compileReport(jasperStream);
+    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, para, new JREmptyDataSource());
+
+    response.setContentType("application/pdf");
+    response.addHeader("Content-Disposition", "inline; filename=recibo_cuota_" + cuotaId + ".pdf;");
+
+    final OutputStream outStream = response.getOutputStream();
     JasperExportManager.exportReportToPdfStream(jasperPrint, outStream);
 }
 
